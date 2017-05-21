@@ -1,0 +1,88 @@
+﻿@model UNMHockeySite.Models.Game
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Opponent)
+    @Html.HiddenFor(model => model.IsHome);
+    @Html.HiddenFor(model => model.Id);
+    @Html.HiddenFor(model=> model.Date);
+    for (int i = 0; i < Model.Goals.Count; i++)
+    {
+        @Html.HiddenFor(model => Model.Goals.ElementAt(i).GameID, new { @Name = string.Format("Goals[{0}].GameID", i) })
+        @Html.HiddenFor(model => Model.Goals.ElementAt(i).Id, new { @Name = string.Format("Goals[{0}].Id", i) , @Value = Model.Goals.ElementAt(i).Id})
+        @Html.HiddenFor(model => Model.Goals.ElementAt(i).Goal_PlayerID, new { @Name = string.Format("Goals[{0}].Goal_PlayerID", i) })
+        @Html.HiddenFor(model => Model.Goals.ElementAt(i).Assist1_PlayerID, new { @Name = string.Format("Goals[{0}].Assist1_PlayerID", i) })
+        @Html.HiddenFor(model => Model.Goals.ElementAt(i).Assist2_PlayerID, new { @Name = string.Format("Goals[{0}].Assist2_PlayerID", i) })
+
+    }
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/acha_square.png" />
+                @if (Model.IsHome.Value)
+                {
+                    <h2>Lobos vs @Model.Opponent</h2>
+                }
+                else
+                {
+                    <h2>Lobos at @Model.Opponent</h2>
+
+                }
+            </div>
+            <div class="card-content">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="TeamScore">Lobos Score:</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TeamScore, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TeamScore, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="OpponentScore">@Model.Opponent Score:</label>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OpponentScore, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.OpponentScore, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="OverTime">Overtime?</label>
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OverTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.OverTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" name="actionButton" value="Next" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Manage")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

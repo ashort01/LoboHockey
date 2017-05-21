@@ -1,0 +1,112 @@
+﻿@model UNMHockeySite.Models.ManageRosterViewModel
+
+@{
+    ViewBag.Title = "Manage Roster";
+}
+@if (Model.playerRequests.Count > 0)
+{
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>Player Requests</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <div>
+                    <ul>
+                        @foreach (var item in Model.playerRequests)
+                        {
+                            <li>
+                                <p>
+                                    @item.Player.Name wants to join the team: 
+                                    @Html.ActionLink("Accept", "AcceptRequest", new { Id = @item.Id, SeasonId = item.Season.Id})
+                                    @Html.ActionLink("Decline", "DeclineRequest", new { Id = @item.Id, SeasonId = item.Season.Id })
+                                </p>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+                <div>
+                    @Html.ActionLink("Back to Manage", "Index")
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+}
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>Manage Roster</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <table class="table info-table">
+                    <thead>
+                    <th>
+                        <b>
+                            Name
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Position
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Birthdate
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Birth Place
+                        </b>
+                    </th>
+                    <th>
+                    </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.players)
+                        {
+                            <tr>
+                                <td align="left">
+                                    <b>
+                                        @item.Player.Name
+                                    </b>
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Player.Position
+                                    </p>
+                                </td>
+                                <td align="left">
+                                    @if (item.Player.BirthDay != null && item.Player.BirthMonth != null && item.Player.BirthYear != null)
+                                    {
+                                        <p>
+                                            @item.Player.BirthMonth/@item.Player.BirthDay/@item.Player.BirthYear
+                                        </p>
+                                    }
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Player.Birthplace
+                                    </p>
+                                </td>
+                                <td>@Html.ActionLink("Remove", "RemovePlayer", new { Id = @item.Id, SeasonId = item.Season.Id })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>
+                    @Html.ActionLink("Back to Manage", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

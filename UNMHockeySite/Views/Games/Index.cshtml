@@ -1,0 +1,98 @@
+﻿@model IEnumerable<UNMHockeySite.Models.GameViewModel>
+
+@{
+    ViewBag.Title = "Schedule";
+}
+
+    <div class="row">
+        <div class="col-md-6 hidden-xs">
+            <div class="card">
+                <div class="card-header">
+                    <img src="~/Content/Images/icon_date.png" />
+                    <h2 id="calendarHeader"></h2>
+                </div>
+                <div class="card-content">
+                    <div class="row" style="padding:20px;" id="calendar">
+                    </div>
+                    <center>
+                        <div class="row legend">
+                            <div class="home-legend col-xs-1">
+                                Home
+                            </div>
+                            <div class="away-legend col-xs-1">
+                                Away
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <img src="~/Content/Images/lobo_side.png" />
+                    <h2>Schedule</h2>
+                </div>
+                <div class="card-content">
+                    <center><b>Click on a game to view details</b></center>
+                    
+                    @Html.Partial("ScheduleTablePartial",Model)
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                theme: true,
+                aspectRatio: 2.5,
+                editable: false,
+                header: {
+                    left: 'prev,next today',
+                    center: '',
+                    right: ''
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    var url = '@Url.Action("Details", "Games")?id=' + calEvent.id;
+                    window.location.href = url;
+                },
+                eventMouseover: function (event, jsEvent, view) {
+                    $(this).css('color', 'black');
+                    $(this).css('cursor', 'pointer');
+
+                },
+                eventMouseout: function (event, jsEvent, view) {
+                    
+                    $(this).css('color', 'white');
+                    $(this).css('cursor', 'default');
+                },
+                events: function (start, end, callback) {
+                    var year = end.getFullYear();
+                    var months = [ "December","January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November"];
+                    var month = months[end.getMonth()];
+                    $('#calendarHeader').text(month + ' ' + year);
+                    $.ajax({
+                        url: "/games/getevents/",
+                        type: 'POST',
+                        success: function (response) {
+                            callback(response);
+                        },
+                        error: function (error) {
+                            alert(error.responseText);
+                        }
+                    });
+                }
+
+            });
+        });
+
+
+    </script>
+}
+

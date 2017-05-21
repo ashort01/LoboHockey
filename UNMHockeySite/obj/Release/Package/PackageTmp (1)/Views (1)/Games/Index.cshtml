@@ -1,0 +1,92 @@
+﻿@model IEnumerable<UNMHockeySite.Models.Game>
+
+@{
+    ViewBag.Title = "Schedule";
+}
+
+<center>
+    <div class="jumbotron-calendar" style="background-color:white; max-width:800px;">
+        <div style="padding:20px;" id="calendar" >
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="jumbotron" style="background-color:white; max-width:800px;">
+        <table class="table info-table" >
+            <caption class="jumbotron-header">Schedule</caption>
+            <caption class="jumbotron-caption">*Click on a game to view details</caption>
+            @foreach (var item in Model)
+            {
+
+                <tr onclick="location.href='@Url.Action("Details","Games", new {id = item.Id})';">
+                    <td >
+                        @if (item.IsHome == true)
+                        {
+                            <img src="~/Content/Images/lobo_side.png"/>
+                        }
+                        @if (item.IsHome == false)
+                        {
+                           <img src="~/Content/Images/icon_away.png" />
+                        }
+
+                    </td>
+                    <td >
+                        <p class="jumbotron-caption">@Html.DisplayFor(modelItem => item.Date)</p>
+                    </td>
+                    <td>
+                            @if (item.IsHome == true)
+                            {
+
+                                <p class="jumbotron-caption">vs.&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                            }
+                            else
+                            {
+                                <p class="jumbotron-caption">@@&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                            }
+                        
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+ 
+
+</center>
+@section scripts{
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                theme: true,
+                //defaultView: 'agendaDay',
+                aspectRatio: 2.5,
+                editable: false,
+                events: "/games/getevents/",
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: 'prev,next today'
+                },
+                eventClick: function (calEvent, jsEvent, view) {
+                    var url = '@Url.Action("Details", "Games")?id=' + calEvent.id;
+                    window.location.href = url;
+                },
+                eventMouseover: function (event, jsEvent, view) {
+                    $(this).css('color', 'black');
+                    $(this).css('cursor', 'pointer');
+
+                },
+                eventMouseout: function(event, jsEvent, view)  {
+                    $(this).css('color', 'white');
+                    $(this).css('cursor', 'default');
+                }
+
+            });
+        });
+
+
+    </script>
+}
+

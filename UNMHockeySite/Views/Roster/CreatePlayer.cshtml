@@ -1,0 +1,206 @@
+﻿@model UNMHockeySite.Models.Player
+
+@{
+    ViewBag.Title = "CreatePlayer";
+}
+
+@using (Html.BeginForm("CreatePlayer", "Roster", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-8 col-md-push-2">
+
+            <div class="card">
+                <div class="card-header">
+                    <img class="pic-smaller" src="~/Content/Images/acha_square.png" />
+                    <h2>Player Information</h2>
+                </div>
+                <div class="card-content">
+                    <br />
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.User.Id)
+                        @Html.HiddenFor(model => model.User.UserName)
+                        @Html.HiddenFor(model => model.isEdit)
+                        <div class="form-group">
+
+                            <label class="control-label col-md-2" for="upload">Upload Photo</label>
+                            @if (Model.PlayerImage != null)
+                            {
+                                    <buton class="card-button" onclick="UploadPhoto()">Change Photo</buton>
+                                    <div id="pnPhoto" class="profile-picture-container">
+                                        <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
+                                    </div>
+                                    <div id="pnlUpload" class="col-md-10 hidden">
+                                        <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
+                                    </div>
+                            }
+                            else
+                            {
+                                <div id="pnlUpload" class="col-md-10">
+                                    <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
+                                </div>
+                            }
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="Name">Full Name</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Birthplace, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Birthplace, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Birthplace, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Ex: Albuquerque, NM </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="BirthMonth">Birthdate</label>
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.BirthMonth, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "-- Select Month --")
+                                @Html.DropDownListFor(model => model.BirthDay, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Day --")
+                                @Html.DropDownListFor(model => model.BirthYear, Enumerable.Range(1900, 109).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Year --")
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Ex: 5' 7" </small>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <small id="emailHelp" class="form-text text-muted">Tell us about yourself! Please write in the 3rd person. </small>
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="Team_Role">Team Role</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Team_Role, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Team_Role, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Ex: (Alternate Captain, Coach, President) </small>
+                                <small id="emailHelp" class="form-text text-muted">(Optional) </small>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Major, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Major, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Major, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Ex: Chemical Engineering </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Ex: Sophomore, or Graduate </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="FacebookURL">Facebook URL</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FacebookURL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FacebookURL, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                <small id="emailHelp" class="form-text text-muted">Ex: https://facebook.com/yourprofile </small>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="TwitterURL">Twitter URL</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TwitterURL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TwitterURL, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                <small id="emailHelp" class="form-text text-muted">Ex: https://twitter.com/yourprofile </small>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="InstagramURL">Instagram URL</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.InstagramURL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InstagramURL, "", new { @class = "text-danger" })
+                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                <small id="emailHelp" class="form-text text-muted">Ex: https://instagram.com/yourprofile </small>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                            <div>
+                                @Html.ActionLink("Back to Manage", "Index","Manage",null,null)
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $("#upload").change(function () {
+        $("#uploadWarning").hide();
+        $('#upload').removeClass("alert-danger");
+    });
+
+    function UploadPhoto() {
+        $("#pnlPhoto").hide();
+        $("#pnlUpload").show();
+    }
+</script>

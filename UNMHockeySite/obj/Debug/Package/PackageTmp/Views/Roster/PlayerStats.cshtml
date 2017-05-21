@@ -1,0 +1,133 @@
+﻿@model UNMHockeySite.Models.StatsViewModel
+    <div id="pnlCurrent">
+            <br />
+            <center>
+                <table style="width:100%">
+                    <tr>
+                        <td width="30%">
+                            <h2 class="day-number">@Model.CurrentSeasonGoals</h2>
+                        </td>
+                        <td width="30%">
+                            <h2 class="day-number">@Model.CurrentSeasonAssists</h2>
+                        </td>
+                        <td width="30%">
+                            <h2 class="day-number">@Model.CurrentSeasonPoints</h2>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            <h6 class="day-label">Goals</h6>
+                        </td>
+                        <td>
+                            <h6 class="day-label">Assists</h6>
+                        </td>
+                        <td>
+                            <h6 class="day-label">Points</h6>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+            <hr />
+        <center>
+            <b>Last Five Games</b>
+            <table class="table info-table clickable-table">
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Opponent</td>
+                        <td>Goals</td>
+                        <td>Assists</td>
+                        <td>Points</td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.LastFiveGames)
+                {
+                    <tr onclick="location.href='@Url.Action("Details", "Games", new { id = item.gameId })';">
+                        @*<td align="left">
+                                @if (item.IsHome == true)
+                                {
+                                    <img src="~/Content/Images/lobo_side.png" />
+                                }
+                                @if (item.IsHome == false)
+                                {
+                                    <img src="~/Content/Images/icon_away.png" />
+                                }
+
+                            </td>*@
+                        <td align="left">
+                            <p>
+                                @item.Date.Date.ToString("ddd, MMM dd")
+                            </p>
+                        </td>
+                        <td align="left">
+                            @if (item.IsHome == true)
+                            {
+
+                                <p>vs.&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                            }
+                            else
+                            {
+                                <p>at&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                            }
+
+                        </td>
+                        <td>
+                            @item.goals
+                        </td>
+                        <td>@item.assists</td>
+                        <td>@item.points</td>
+                    </tr>
+                }
+            </table>
+        </center>
+    </div>
+</div>
+
+<div id="pnlCareer">
+    <table class="table info-table">
+        <thead>
+            <tr>
+                <td></td>
+                <td>Games Played</td>
+                <td>Goals</td>
+                <td>Assists</td>
+                <td>Points</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.SeasonList)
+            {
+            <tr>
+                <td>
+
+                    @item.title
+                </td>
+                <td>
+
+                    @item.gamesPlayed
+                </td>
+                <td>
+                    @item.goals
+                </td>
+                <td>@item.assists</td>
+                <td>@item.points</td>
+            </tr>
+
+            }
+        <tr>
+            <td><b>Total</b></td>
+            <td>
+                <b>@Model.TotalGamesPlayed</b>
+            </td>
+            <td>
+                <b>@Model.TotalGoals</b>
+            </td>
+            <td>
+                <b>@Model.TotalAssists</b>
+            </td>
+            <td>
+                <b>@Model.TotalPoints</b>
+            </td>
+        </tr>
+    </table>
+
+</div>

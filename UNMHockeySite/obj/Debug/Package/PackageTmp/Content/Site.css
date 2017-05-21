@@ -1,0 +1,627 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-color:#a32929;
+    background-image: url(Images/flyer.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 20%;
+
+}
+.hover{
+    cursor:pointer;
+}
+
+.image-circle{
+    border-radius:50%;
+}
+.profile-picture {
+    max-width:100%;
+
+}
+.profile-picture-container {
+    max-height:250px;
+    overflow:hidden;
+}
+
+.loss-text{
+    color:#d13838;
+    font-weight:600;
+}
+.win-text {
+    color: #069819;
+    font-weight: 600;
+}
+.tie-text {
+    font-weight: 600;
+
+}
+.result-text {
+        position: relative;
+        top: 50%;
+    transform: translateY(70%);
+}
+
+/*Countdown clock*/
+.clock-table {
+    border:solid;
+    border-color:#00346A;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.7);
+    border-radius:3px !important;
+    border-width:2px;
+}
+.clock-table tr { 
+    line-height: 10px; 
+}
+
+.day-number{
+    margin-left:5px;
+    margin-right:5px;
+    color:#00346A;
+    font-size:3.5vmin;
+    font-weight:600;
+    padding:5px;
+}
+.day-label{
+    font-size:1.6vmin;
+    margin-top:1px;
+    margin-bottom:2px;
+}
+@media screen and (max-width: 400px) {
+    .clock-table tr {
+        line-height:4px;
+    }
+    .day-number {
+        margin-top:2px;
+    }
+    .day-label{
+        font-size:1.6vmin;
+        margin-top:0px;
+        margin-bottom:3px;
+    }
+}
+
+/*Google-style cards*/
+.card
+{
+    border-radius:3px !important;
+    background-color:white;
+    opacity:1;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.61);
+    margin:15px;
+    margin: 0 0 30px 0;
+
+}
+
+.card-header{
+    height:50px;
+    width:100%;
+    background:#007A86;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    color:white;
+    vertical-align:middle;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.7);
+}
+.card-tab-selector {
+    height:25px;
+    width:100%;
+    background:#01616b;
+    color:white;
+    display:block;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.7);
+}
+
+.card-header h2{
+    position: relative;
+    top:17px;
+    font-size:5.0vmin;
+    margin-left: 65px;
+}
+.card-content h2{
+    font-size:5.0vmin;
+    text-align:center;
+    margin-bottom:20px;
+}
+.clickable :hover{
+    cursor:pointer;
+}
+.card-header :hover {
+    cursor:pointer;
+}
+.card-header-small{
+    background:#c09b68;
+}
+.card-header img{
+    margin-left: 10px;
+    position: relative;
+    top:10px;
+    float:left;
+    width:30px;
+    border-radius:50%;
+    background-color:white;
+}
+
+.icon-circle {
+    width:30vmin;
+    margin-top:10px;
+}
+.card-info-pnl {
+    margin-top:15px;
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.card-content p{
+    font-size:2.5vmin;
+}
+.long-paragraph {
+    text-align:center;
+    margin-left:5vmin;
+    margin-right:5vmin;
+}
+
+.long-paragraph-left {
+    margin-left:5vmin;
+    margin-right:5vmin;
+}
+.card-content b{
+    font-size:2.5vmin;
+}
+.card-content .header-image {
+    width:100%;
+    margin-top:10px;
+}
+.card-button {
+    display:block;
+    border-radius:10px;
+    padding:5px;
+    border:solid;
+    border-width: 2px;
+    background-color:white;
+    color: #00346A;
+    font-weight:900;
+    font-size:3.0vmin;
+    margin: 5px auto;
+    width:150px;
+}
+.card-button-small {
+     display:block;
+    border-radius:10px;
+    padding:5px;
+    border:solid;
+    border-width: 1px;
+    background-color:white;
+    font-size:3.0vmin;
+    margin: 5px auto;
+}
+.card-button :hover {
+    background-color:black;
+    color:white;
+}
+.card-tab-button {
+    background:none;
+    border:none;
+    width:100%;
+    color:white;
+    height:25px;
+    font-size:3.0vmin;
+    vertical-align:middle;
+    margin:0;
+}
+.card-tab-button:focus,.card-tab-button:active{
+    outline:none !important;
+}
+.card-img-link{
+    width:7.0vmin;
+}
+.selected {
+    border:none;
+    border-bottom:solid;
+    border-color:white;
+    border-width:2px;
+}
+.small-table-font{
+    font-size:2.0vmin;
+}
+.small-table-font p {
+    font-size:2.0vmin;
+}
+.small-table-font b {
+    font-size:1.5vmin;
+}
+.card-content {
+    position:relative;
+    padding: 0px 10px 10px 10px;
+}
+.pic-smaller {
+    padding:3px;
+}
+
+/*Navbar stuff*/
+.navbar-inverse { 
+    background-color: #2f2f2f !important; 
+    border:none;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,.7);
+    font-weight:500;
+
+}
+.navbar-brand {
+    text-decoration:none;
+}
+
+.navbar-link {
+    text-decoration:none;
+    
+}
+.nav-bar-title {
+    text-align:center;
+    margin-top:38px;
+    margin-left:25px;
+    padding-left:390px;
+    padding-right:550px;
+}
+
+.navbar-toggle {
+    border:none;
+}
+
+.navbar-toggle:focus, .navbar-toggle:active{
+    outline:none !important;
+    background:none !important;
+}
+
+.validation-summary-valid
+{
+    display:none;
+}
+.validation-summary-erros
+{
+    display:none;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.input-color {
+    position: relative;
+}
+.input-color input {
+    padding-left: 20px;
+}
+.input-color .color-box {
+    width: 120px;
+    height: 20px;
+    display: inline-block;
+    background-color: #ccc;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+.jumbotron{
+    border-radius:2px !important;
+    background-color:white;
+    opacity:1;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.61);
+    
+}
+.jumbotron-slim{
+    max-width:500px;
+}
+
+.jumbotron-caption {
+    font-size:2.5vmin;
+    
+}
+.jumbotron-header {
+    font-size:3.0vmin;
+}
+.jumbotron-content-text {
+    font-size:4.0vmin;
+}
+.jumbotron-content-text img {
+    max-width:30px;
+    width:4.0vmin;
+    
+}
+/*Font Size adjust*/
+/*Put in size for screens larger than 400px*/
+@media screen and (min-width: 400px)
+{
+    .jumbotron-caption{
+        font-size:14px;
+        
+    }
+    .jumbotron-header{
+        font-size:24px;
+    }
+    .jumbotron-content-text {
+        font-size:12px;
+    }
+    .card .card-header h2{
+        font-size:18px;
+    }
+    .card .card-content .card-button {
+        font-size:12px;
+    }
+    .card .card-content .card-button-small {
+        font-size:12px;
+    }
+    .day-number {
+        font-size:20px;
+    }
+    .day-label {
+        font-size:8px;
+    }
+    .card-tab-button {
+        font-size: 12px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+    }
+
+    .card-content b {
+        font-size: 14px;
+    }
+
+    .card-content h2 {
+        font-size: 24px;
+    }
+
+    .card-img-link {
+        width: 30px;
+    }
+
+    .small-table-font {
+        font-size: 10px;
+    }
+
+    .small-table-font p {
+        font-size: 10px;
+    }
+
+    .small-table-font b {
+        font-size: 8px;
+    }
+
+
+}
+@media screen and (max-width: 800px) {
+            .image-only-on-big-screen{
+            display:none;
+        }
+}
+@media screen and (max-width: 500px) {
+        .card .card-content .card-button {
+        width:auto;
+    }
+
+
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.top-bar-image {
+    position:relative;
+    height: 140px;
+    display: inline-block;
+    width: 100%;
+    background-image:url(Images/top_bar_background.png);
+     background-repeat: no-repeat;
+    background-size:cover;
+    margin:0px;
+    background-position:0% 0%;
+    z-index: -2;
+}
+
+
+.top-bar-design-image {
+    position: absolute;
+    top: -26px;
+    left: -16px;
+    padding:0px;
+    margin:0px;
+    z-index: -1;
+
+}
+
+
+@media screen and (max-width: 900px) {
+    .top-bar-image {
+        display: none;
+    }
+
+}
+/*Table stuff*/
+.clickable-table tbody tr:hover 
+{
+    background-color: #ffff94;
+    cursor:pointer;
+}
+.clickable-table thead:hover 
+{
+    background-color: #fff;
+    color:black;
+}
+
+
+
+.info-table{
+    margin-top:3px;
+    text-align:center;
+}
+
+.info-table td
+{
+    vertical-align:middle;
+}
+
+.info-table td img
+{
+    width:25px;
+}
+
+.info-list {
+    text-align:left;
+    display:inline-block;
+}
+.info-list p{
+    display:inline;
+}
+.small-table {
+    max-width:500px;
+}
+
+/*First page components start below*/
+.home-page-table
+{
+    width:90%;
+    height:500px;
+    
+   
+}
+.home-page-table td
+{
+    padding:4px;
+    width:1%;
+    height:100%;
+}
+@media screen and (max-width: 900px) {
+    .home-page-table table {
+        display: none;
+        width: 100%;
+    }
+
+    .home-page-table td {
+        width:0%;
+    }
+}
+.next-game
+{
+    height:100%;
+    background-image: url(Images/faceoff.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: 36% 0%;
+    
+}
+
+.season-tickets
+{
+    height:100%;
+    background-image: url(Images/big_hit.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: 36% 0%;
+}
+.schedule
+{
+    height:100%;
+    background-image: url(Images/skating.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: 36% 0%;
+}
+
+
+.home-page-table-first-column
+{
+    height:500px;
+    width:100%;
+}
+.home-page-table-first-column td
+{
+    width:100%;
+    height:1%;
+}
+.text-overlay
+{
+    background-color:black;
+    opacity:0.7
+}
+h2 span { 
+    z-index:1;
+   color: white; 
+   text-decoration: underline;
+   font: bold 24px/45px Helvetica, Sans-Serif;     
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px; 
+   
+}
+h2 :hover, h2 :hover span{
+    z-index:1;
+    background: rgba(0, 0, 0,1);
+    cursor:pointer;
+}
+h3 span { 
+   color: white; 
+   font: bold 19px/45px Helvetica, Sans-Serif;     
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   text-decoration:none;
+ }
+h3 :hover, h3 :hover span{
+    background: rgba(0, 0, 0,1);
+    cursor:pointer;
+}
+
+/*End of first page components*/
+
+/*Full calendar stuff*/
+.fc-today {
+     color:white;
+     border:none;
+     background:#01616b !important;
+     opacity:.55;
+  }
+.legend {
+    display:inline-block;
+}
+.home-legend {
+    color:white;
+    font-weight:700;
+    margin:5px;
+    border-radius:3px;
+    text-align:center;
+    width:100px;
+    background-color:#D41045;
+}
+.away-legend {
+    color:white;
+    font-weight:700;
+    margin:5px;
+    border-radius:3px;
+    text-align:center;
+    width:100px;
+    background-color:#C4C4C4;
+}
+.note {
+    font-size:9px;
+    color:grey;
+    font-style:italic;
+}
+.note b {
+    font-size:9px;
+    color:grey;
+    font-style:italic;
+}

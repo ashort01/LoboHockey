@@ -1,0 +1,362 @@
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll.config
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.pdb
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Owin.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\WebGrease.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.pdb
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.pdb
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.ImageOptimizationFramework.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.SpriteHelper.dll
+C:\Users\Owner\Google Drive\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll.config
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.pdb
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.ImageOptimizationFramework.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.SpriteHelper.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Owin.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\WebGrease.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.pdb
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.dll
+C:\Users\Owner\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.pdb
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.csprojResolveAssemblyReference.cache
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll.config
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.pdb
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Edm.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.OData.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.ImageOptimizationFramework.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.SpriteHelper.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Owin.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\SendGrid.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\SendGrid.SmtpApi.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\SendGridMail.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Net.Http.Formatting.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Spatial.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\WebGrease.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Edm.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.OData.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Services.Client.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Net.Http.Formatting.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Spatial.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.pdb
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\de\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\es\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\fr\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\it\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ja\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ko\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\ru\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.dll
+C:\Users\Austin\Google Drive\Code\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.pdb
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll.config
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\UNMHockeySite.pdb
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Edm.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.OData.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.ImageOptimizationFramework.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Web.Samples.SpriteHelper.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Owin.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\SendGrid.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\SendGrid.SmtpApi.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\SendGridMail.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Net.Http.Formatting.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Spatial.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\WebGrease.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\EntityFramework.SqlServer.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Edm.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.OData.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Data.Services.Client.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Newtonsoft.Json.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Net.Http.Formatting.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Spatial.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Helpers.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Mvc.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Optimization.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.Razor.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\System.Web.WebPages.Razor.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Antlr3.Runtime.pdb
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\de\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\es\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\fr\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\it\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ja\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ko\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\ru\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.InitialMigration.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.addingtablesseasonplayerandgameplayer.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.addingtablesseasonplayerandgameplayer1.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.addingseasonidtogames.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.madeafewchanges.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.MyMigration.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.csproj.GenerateResource.Cache
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.pdb
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.csprojResolveAssemblyReference.cache
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.photosTable.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.addImageToPlayer.resources
+C:\Users\Austin\Documents\Visual Studio 2015\Projects\UNMHockeySite\UNMHockeySite\obj\Debug\UNMHockeySite.Migrations.addImageToPlayer1.resources

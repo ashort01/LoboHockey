@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+<div class="row">
+    <div class="col-md-8 col-md-push-2">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/lobo_side.png" />
+                <h2>About</h2>
+            </div>
+            <div class="card-tab-selector">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <center>
+                            <button id="btnHomeRink" class="card-tab-button">Home Rink</button>
+                        </center>
+                    </div>
+                    <div class="col-xs-4">
+                        <center>
+                            <button id="btnLeague" class="card-tab-button">Our League</button>
+                        </center>
+                    </div>
+                    <div class="col-xs-4">
+                        <center>
+                            <button id="btnSchool" class="card-tab-button">Our School</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div id="pnlHomeRink">
+                    <div class="clickable">
+                        <h2 onclick="window.open('http://www.google.com/search?q=Outpost+Ice+Arena');">Outpost Ice Arena</h2>
+                    </div>
+                    <table class="table info-table">
+                        <tr>
+                            <td>
+                                <i class="glyphicon glyphicon-map-marker" />
+                            </td>
+                            <td>
+                                <b>Location</b>
+                            </td>
+                            <td>
+                                <p>9530 Tramway Blvd NE, Albuquerque, NM 87122</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="glyphicon glyphicon-phone-alt" />
+                            </td>
+                            <td>
+                                <b>Contact</b>
+                            </td>
+                            <td>
+                                <a href="tel:+1-505-856-7595"><p>(505) 856-7595</p></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="glyphicon glyphicon-globe" />
+                            </td>
+                            <td>
+                                <b>Website</b>
+                            </td>
+                            <td>
+                                <a href="http://www.outposticearena.com/"><p>outposticearena.com</p></a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="card-info-pnl" id="pnlOurLeague">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <center>
+                                <a href="http://achahockey.org/view/achahockey/divisions/men-s-d3">
+                                    <img class="icon-circle" src="~/Content/Images/acha_square.png" />
+                                </a>
+
+                                <a href="http://achahockey.org/view/achahockey/divisions/men-s-d3"><p>ACHA Division III</p></a>
+                                <p>Pacific Region</p>
+                            </center>
+                        </div>
+                    </div>
+                    <hr />
+                    <p class="long-paragraph">
+                        We play in the American Collegiate Hockey Association (ACHA) Division 3. We are in the Pacific Division, along with 37 other teams, ranging from Chicago to California!
+                        &nbspWe play teams such as Texas Tech, Air Force, UNLV, and many more schools across the Southwest.
+
+                    </p>
+                </div>
+                <div id="pnlOurSchool">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <center>
+                                <a href="http://www.google.com/search?q=unm">
+                                    <img class="icon-circle" src="~/Content/Images/unm-logo.png" />
+                                </a>
+                                <a href="http://www.google.com/search?q=unm"><p>University of New Mexico</p></a>
+                            </center>
+                        </div>
+                    </div>
+                    <hr />
+                    <p class="long-paragraph">
+                        The University of New Mexico (UNM) is a public research university located in Albuquerque, New Mexico.
+                        There is over 25,000 students Enrolled at UNM, many attending the beautiful campus located across 600
+                        acres in central Albuquerque. UNM offers more than 215-degree and certificate
+                        programs, including 94 baccalaureate, 71 masters and 37 doctoral degrees, through 12 colleges and schools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnHomeRink').click();
+    });
+    $('.card-tab-button').on('click', function () {
+        $('.card-tab-button').removeClass('selected');
+        $(this).addClass('selected');
+        if (this.id == 'btnLeague')
+        {
+            $('#pnlHomeRink').css('display', 'none');
+            $('#pnlOurLeague').css('display', 'block');
+            $('#pnlOurSchool').css('display', 'none');
+
+        }
+        else if (this.id == 'btnHomeRink')
+        {
+            $('#pnlHomeRink').css('display', 'block');
+            $('#pnlOurLeague').css('display', 'none');
+            $('#pnlOurSchool').css('display', 'none');
+        }
+        else if (this.id == 'btnSchool')
+        {
+            $('#pnlHomeRink').css('display', 'none');
+            $('#pnlOurLeague').css('display', 'none');
+            $('#pnlOurSchool').css('display', 'block');
+        }
+    });
+</script>

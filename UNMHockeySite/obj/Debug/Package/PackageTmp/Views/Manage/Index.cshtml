@@ -1,0 +1,79 @@
+﻿@model UNMHockeySite.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>@ViewBag.Title</h2>
+            </div>
+            <div class="card-content">
+                <br />
+
+                <p class="text-success">@ViewBag.StatusMessage</p>
+                <div>
+                    <dl class="dl-horizontal">
+
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <dt>Games:</dt>
+                            <dd>
+                                @Html.ActionLink("Manage Games", "ManageGamesInitial")
+                            </dd>
+                            <dt>Roster:</dt>
+                            <dd>
+                                @Html.ActionLink("Manage Roster", "ManageRosterInitial")
+                            </dd>
+                            <dt>Seasons:</dt>
+                            <dd>
+                                @Html.ActionLink("Add a new Season", "CreateSeason")
+                            </dd>
+                        }
+                        <dt>My Info:</dt>
+                        <dd>
+                            @Html.ActionLink("Manage Player Info", "CreatePlayer", "Roster", "", "")
+                        </dd>
+                        <dt>Password:</dt>
+                        <dd>
+
+                            @if (Model.HasPassword)
+                            {
+                                @Html.ActionLink("Change your password", "ChangePassword")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Create", "SetPassword")
+                            }
+
+                        </dd>
+                        <dt>Player Status:</dt>
+                        @if (ViewBag.isOnCurrent)
+                        {
+                            <dd>
+                                You are on the team this season.
+                            </dd>
+                        }
+                        else
+                        {
+                            if (ViewBag.isCurrentRequest)
+                            {
+                                <dd>
+                                    Your request to join the team this season is pending. Please contact team manager for questions.
+                                </dd>
+                            }
+                            else
+                            {
+                                <dd>
+                                    You are not on the team this season. @Html.ActionLink("Request To Join The Team", "PlayerRequestThisSeason")
+                                </dd>
+                            }
+                        }
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

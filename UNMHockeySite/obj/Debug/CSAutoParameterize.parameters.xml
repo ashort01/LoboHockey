@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="TeamEntities-Web.config Connection String" description="TeamEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=lobohockeyteamdb.database.windows.net;Initial Catalog='Team_2016-09-03T19 -46Z';Integrated Security=False;User ID=ashort01;Password=AJiscool-1;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Austin\\Documents\\Visual\ Studio\ 2015\\Projects\\UNMHockeySite\\UNMHockeySite\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TeamEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UNMHockeySite.Models.PlayerStats>
+
+<table class="table info-table small-table-font">
+    <thead>
+    <th>
+        <b>
+            Name
+        </b>
+    </th>
+    <th>
+        <b>
+            Position
+        </b>
+    </th>
+    <th>
+        <b>
+            Goals
+        </b>
+    </th>
+    <th>
+        <b>
+            Assists
+        </b>
+    </th>
+    <th>
+        <b>
+            Points
+        </b>
+    </th>
+    </thead>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td align="left">
+                <a class="hover" onclick="location.href='@Url.Action("Details","Roster", new {id = item.id})';">
+                   @item.name
+                </a>
+            </td>
+            <td align="left">
+                <p>
+                    @item.position
+                </p>
+            </td>
+            <td align="left">
+                <p>
+                    @item.goals
+                </p>
+            </td>
+            <td align="left">
+                <p>
+                    @item.assists
+                </p>
+            </td>
+            <td align="left">
+                <p>
+                    @item.points
+                </p>
+            </td>
+
+        </tr>
+    }
+</table>
