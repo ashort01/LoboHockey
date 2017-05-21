@@ -1,0 +1,45 @@
+﻿@model UNMHockeySite.Models.GameManagerViewModel
+
+@using (Html.BeginForm("EditDetails", "Games", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Opponent)
+    @Html.HiddenFor(model => model.IsHome);
+    @Html.HiddenFor(model => model.Id);
+    @Html.HiddenFor(model => model.Date);
+    @Html.HiddenFor(model => model.TeamScore);
+    @Html.HiddenFor(model => model.OpponentScore);
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <img src="~/Content/Images/acha_square.png" />
+                    @if (Model.IsHome.Value)
+                    {
+                        <h2>Lobos vs @Model.Opponent</h2>
+                    }
+                    else
+                    {
+                        <h2>Lobos at @Model.Opponent</h2>
+
+                    }
+                </div>
+                <div class="card-content">
+                        @Html.EditorFor(m => m.goals)
+                    <br />
+                    <br />
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="submit" name="actionButton" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

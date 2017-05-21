@@ -1,0 +1,152 @@
+﻿@model UNMHockeySite.Models.Player
+<div class="row">
+    <div id="pnlDetails">
+        <br />
+        <div class="col-xs-6">
+            <center>
+                @if (Model.PlayerImage != null)
+                {
+                    <div class="profile-picture-container">
+                        <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
+                    </div>
+                }
+                else
+                {
+                    <div class="profile-picture-container">
+                        <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
+                    </div>
+                }
+            </center>
+        </div>
+        <div class="col-xs-6">
+            <div class="row" style="margin-bottom:3.0vmin">
+                <div class="col-xs-12">
+                    <b>@Model.Name</b>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:3.0vmin">
+                <div class="col-xs-6">
+                    @if (!String.IsNullOrEmpty(Model.Position))
+                    {
+                        <b>@Model.Position </b>
+                    }
+                </div>
+                <div class="col-xs-6">
+                    @if (!String.IsNullOrEmpty(Model.Number.ToString()))
+                    {
+                        <b>#@Model.Number</b>
+                    }
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-6">
+                    @if (!String.IsNullOrEmpty(Model.Height))
+                    {
+                        <b>Height: </b><p>&nbsp;@Model.Height</p>
+                    }
+                </div>
+                <div class="col-xs-6">
+                    @if (!String.IsNullOrEmpty(Model.Weight.ToString()))
+                    {
+                        <b>Weight: </b><p>&nbsp;@Model.Weight</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div id="pnlBio">
+        <div class="col-sm-12 col-xs-12 col-md-6">
+            <center>
+                <br />
+                @if (Model.BirthDay != null && Model.BirthMonth != null && Model.BirthYear != null)
+                {
+                    <div class="col-xs-6 col-md-12 info-list">
+                        <b>Born: </b><p>@Model.BirthMonth/@Model.BirthDay/@Model.BirthYear</p>
+                    </div>
+                }
+                @if (Model.Age != null)
+                {
+                    <div class="col-xs-6 col-md-12 info-list">
+                        <b>Age: </b><p>@Model.Age</p>
+                    </div>
+                }
+
+                @if (!String.IsNullOrEmpty(Model.Birthplace))
+                {
+                    <div class="col-xs-6 col-md-12 info-list">
+                        <b>Hometown: </b><p>&nbsp; @Model.Birthplace</p>
+                    </div>
+                }
+
+
+                @if (!String.IsNullOrEmpty(Model.Major))
+                {
+                    <div class="col-xs-6 col-md-12 info-list">
+                        <b>Major: </b><p>&nbsp;@Model.Year @Model.Major</p>
+                    </div>
+                }
+                @if (!String.IsNullOrEmpty(Model.Team_Role))
+                {
+                    <div class="col-xs-6 col-md-12 info-list">
+                        <b>Team Role:&nbsp;</b><p>
+                            @Model.Team_Role
+                        </p>
+                    </div>
+                }
+            </center>
+        </div>
+        <div class="hidden-sm hidden-xs">
+            <div class="col-md-6">
+                <br />
+                <center>
+                    <img src="~/Content/Images/lobo.png" />
+                </center>
+            </div>
+        </div>
+
+
+        <div class="row"></div>
+        <div class="col-xs-12">
+            <hr />
+            @if (!String.IsNullOrEmpty(Model.Bio))
+            {
+                <b style="margin-left:4.0vmin">Bio: </b><p class="long-paragraph-left">&nbsp; @Model.Bio</p>
+            }
+        </div>
+        <div class="row"></div>
+        <div class="col-xs-12">
+            @if (!String.IsNullOrEmpty(Model.FacebookURL) || !String.IsNullOrEmpty(Model.TwitterURL) || !String.IsNullOrEmpty(Model.InstagramURL))
+            {
+                <hr />
+                <b style="margin-left:4.0vmin">Follow @Model.Name on:</b>
+            }
+            <center>
+                <br />
+                @if (!String.IsNullOrEmpty(Model.FacebookURL))
+            {
+                    <div class="col-xs-4">
+                        <a href="@Model.FacebookURL"><img class="card-img-link" src="~/Content/Images/facebook_icon.png" /></a>
+                    </div>
+                }
+                @if (!String.IsNullOrEmpty(Model.TwitterURL))
+            {
+                    <div class="col-xs-4">
+                        <a href="@Model.TwitterURL"><img class="card-img-link" src="~/Content/Images/twitter_icon.png" /></a>
+                    </div>
+                }
+                @if (!String.IsNullOrEmpty(Model.InstagramURL))
+            {
+                    <div class="col-xs-4">
+                        <a href="@Model.InstagramURL"><img class="card-img-link" src="~/Content/Images/instagram_icon.png" /></a>
+                    </div>
+                }
+            </center>
+        </div>
+    </div>
+</div>

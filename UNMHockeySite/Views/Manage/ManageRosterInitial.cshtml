@@ -1,0 +1,30 @@
+﻿@model UNMHockeySite.Models.ManageRosterViewModelInitial
+@{
+    ViewBag.Title = "Manage Roster";
+}
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>@ViewBag.Title</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.DropDownListFor(m => m.SelectedSeasonId, Model.SeasonIdList)
+                            <input type="submit" value="Next" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+                </div>
+                <div>
+                    @Html.ActionLink("Back to Manage", "Index")
+                </div>
+            </div>
+        </div>
+    </div>

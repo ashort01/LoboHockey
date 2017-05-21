@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Success";
+}
+<div class="jumbotron">
+    
+    <h2 class="jumbotron-header">@ViewBag.Title</h2>
+    <hr />
+    <p class="jumbotron-caption">Thank you for your interest in supporting our team! Someone will be in 
+    touch with you shortly regarding your order.</p>
+
+    @Html.ActionLink("Return to Home Page","Index","Home", new object { },
+            new { @class = "jumbotron-caption" })
+    
+             
+</div>
+

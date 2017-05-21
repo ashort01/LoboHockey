@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Opponent" Type="varchar" MaxLength="50" />
+    <Property Name="IsHome" Type="bit" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="TeamScore" Type="int" />
+    <Property Name="OpponentScore" Type="int" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Player" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Birthplace" Type="varchar" MaxLength="50" />
+    <Property Name="RosterId" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Height" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="int" />
+    <Property Name="Birthdate" Type="varchar" MaxLength="50" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Roster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatsYear">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Goals" Type="int" />
+    <Property Name="Assists" Type="int" />
+    <Property Name="Goals Against Average" Type="float" />
+    <Property Name="Saves" Type="int" />
+    <Property Name="Shots Against" Type="int" />
+    <Property Name="PlayerId" Type="int" />
+  </EntityType>
+  <Association Name="FK_PlayerId">
+    <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+    <End Role="StatsYear" Type="Self.StatsYear" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatsYear">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKRosterId">
+    <End Role="Roster" Type="Self.Roster" Multiplicity="0..1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="RosterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeamModelStoreContainer">
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roster" EntityType="Self.Roster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatsYear" EntityType="Self.StatsYear" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PlayerId" Association="Self.FK_PlayerId">
+      <End Role="Player" EntitySet="Player" />
+      <End Role="StatsYear" EntitySet="StatsYear" />
+    </AssociationSet>
+    <AssociationSet Name="FKRosterId" Association="Self.FKRosterId">
+      <End Role="Roster" EntitySet="Roster" />
+      <End Role="Player" EntitySet="Player" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

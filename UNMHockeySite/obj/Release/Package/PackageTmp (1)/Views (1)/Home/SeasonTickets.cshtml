@@ -1,0 +1,52 @@
+﻿@model UNMHockeySite.Models.EmailFormModel
+@{
+    ViewBag.Title = "Season Tickets";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="jumbotron">
+
+
+            <h2>@ViewBag.Title</h2>
+            <div class="col-md-12">
+                <h4>Please fill out the form below, and you will be contacted with an opportunity to buy season tickets.</h4>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <hr />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.FromName, new { @class = "control-label" })
+                    </div>
+                        @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.FromEmail, new { @class = "control-label" })
+                    </div>
+                        @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                    </div>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+                    </div>
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-12">
+                        <input type="submit" class="btn btn-default" value="Submit Order Request" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </center>
+}

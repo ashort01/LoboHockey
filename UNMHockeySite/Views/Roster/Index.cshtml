@@ -1,0 +1,72 @@
+﻿@model List<UNMHockeySite.Models.Player>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-8 col-md-push-2">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/lobo_side.png" />
+                <h2>Roster</h2>
+            </div>
+            <div class="card-content">
+                <center><b>Click on a player to view bio</b></center>
+
+                <table class="table info-table clickable-table">
+                    <thead>
+                    <th>
+                        <b>
+                            Name
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Position
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Birthdate
+                        </b>
+                    </th>
+                    <th>
+                        <b>
+                            Birth Place
+                        </b>
+                    </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr onclick="location.href='@Url.Action("Details","Roster", new {id = item.Id})';">
+                                <td align="left">
+                                    <b>
+                                        @item.Name
+                                    </b>
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Position
+                                    </p>
+                                </td>
+                                <td align="left">
+                                        @if (item.BirthDay != null && item.BirthMonth != null && item.BirthYear != null)
+                                        {
+                                            <p>
+                                            @item.BirthMonth/@item.BirthDay/@item.BirthYear
+                                            </p>
+                                        }
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Birthplace
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,345 @@
+﻿@model UNMHockeySite.Models.HomePageViewModel
+@if (Model.nextGame != null)
+{
+    if (Model.nextGame.IsHome == true)
+    {
+        ViewBag.GameTitle = "UNM Lobos vs. " + Model.nextGame.Opponent;
+        ViewBag.GameDate = Model.nextGame.Date.Value.ToString("MM/dd/yyyy HH:mm:ss");
+    }
+    else if (Model.nextGame.IsHome == false)
+    {
+        ViewBag.GameTitle = "Lobos at " + Model.nextGame.Opponent;
+        ViewBag.GameDate = Model.nextGame.Date.Value.ToString("MM/dd/yyyy HH:mm:ss");
+    }
+    else
+    {
+        ViewBag.GameTitle = "TBA";
+    }
+}
+
+
+<div class="container">
+    <div class="col-md-8">
+        @if (Model.nextGame != null)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <img class="pic-smaller" onclick="location.href='@Url.Action("Details", "Games", new { id = Model.nextGame.Id })';" src="~/Content/Images/logo_sticks.jpeg" />
+                    <h2 onclick="location.href='@Url.Action("Details", "Games", new { id = Model.nextGame.Id })';">Next Game</h2>
+                </div>
+                <div class="card-content">
+                    <center>
+                        <h3 class="jumbotron-header">@ViewBag.GameTitle</h3>
+                        <div id="clock">
+                            <table class="clock-table">
+                                <tr class="clock-row">
+                                    <td>
+                                        <div id="days" class="day-number"></div>
+                                    </td>
+                                    <td>
+                                        <div id="hours" class="day-number"></div>
+                                    </td>
+                                    <td>
+                                        <div id="minutes" class="day-number"></div>
+                                    </td>
+                                    <td>
+                                        <div id="seconds" class="day-number"></div>
+                                    </td>
+                                </tr>
+                                <tr align="center">
+                                    <td>
+                                        <h6 class="day-label">Days</h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="day-label">Hours</h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="day-label">Minutes</h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="day-label">Seconds</h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        @if (Model.nextGame.IsHome == true)
+                        {
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <i class="glyphicon glyphicon-calendar"></i><h4 class="jumbotron-caption">@Model.nextGame.Date.Value.Date.ToString("ddd, MMM dd")</h4>
+                                </div>
+                                <div class="col-xs-4">
+                                    <i class="glyphicon glyphicon-time"></i><h4 class="jumbotron-caption">@Model.nextGame.Date.Value.ToShortTimeString()</h4>
+                                </div>
+                                <div class="col-xs-4">
+                                    <i class="glyphicon glyphicon-map-marker"></i><h4 class="jumbotron-caption">@Html.ActionLink("Outpost Ice Arena", "About", "Home")</h4>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <h4 class="jumbotron-caption">@Model.nextGame.Date.Value.Date.ToString("ddd, MMM dd")</h4>
+                                <h4 class="jumbotron-caption">@Model.nextGame.Date.Value.ToShortTimeString()</h4>
+                            </div>
+                        }
+                        <br />
+                    </center>
+                    <button class="card-button" onclick="location.href='@Url.Action("Details", "Games", new { id = Model.nextGame.Id })';">Game Details</button>
+
+                </div>
+
+            </div>
+        }
+
+        @if (Model.nextFiveGames.Count > 0)
+        {
+            <div class="card">
+                <div class="card-header">
+                    <img class="pic-smaller" onclick="location.href='@Url.Action("Index", "Games")'" src="~/Content/Images/icon_date.png" />
+                    <h2 onclick="location.href='@Url.Action("Index", "Games")'">Upcoming Games</h2>
+                </div>
+                <div class="card-content">
+                    <table class="table info-table clickable-table">
+                        @foreach (var item in Model.nextFiveGames)
+                        {
+                            <tr onclick="location.href='@Url.Action("Details", "Games", new { id = item.Id })';">
+                                <td align="left">
+                                    @if (item.IsHome == true)
+                                    {
+                                        <img src="~/Content/Images/lobo_side.png" />
+                                    }
+                                    @if (item.IsHome == false)
+                                    {
+                                        <img src="~/Content/Images/icon_away.png" />
+                                    }
+
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Date.Value.Date.ToString("ddd, MMM dd  ")
+                                    </p>
+                                </td>
+                                <td align="left">
+                                    <p>
+                                        @item.Date.Value.ToShortTimeString()
+                                    </p>
+                                </td>
+                                <td align="left">
+                                    @if (item.IsHome == true)
+                                    {
+
+                                        <p>vs.&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                                    }
+                                    else
+                                    {
+                                        <p>at&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <button class="card-button" onclick="location.href='@Url.Action("Index", "Games")'">Full Schedule</button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card" name="EndOfSeasonCard">
+                <div class="card-header">
+                    <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                    <h2>End of Season</h2>
+                </div>
+                <div class="card-content">
+                    <br />
+                    <p class="long-paragraph">We'd like to thank all the fans for your continued support! We'll be back next year, check here for details coming soon!</p>
+                </div>
+            </div>
+        }
+
+        @if (!String.IsNullOrEmpty(Model.featuredPlayer.Name))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <img onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.featuredPlayer.Id })';" src="~/Content/Images/lobo_side.png" />
+                    <h2 onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.featuredPlayer.Id })';">Featured Lobo</h2>
+                </div>
+                <div class="card-tab-selector">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <center>
+                                <button id="btnDetails" class="card-tab-button">Details</button>
+                            </center>
+                        </div>
+                        <div class="col-xs-6">
+                            <center>
+                                <button id="btnBio" class="card-tab-button">Bio</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    @Html.Partial("~/Views/Roster/PlayerContent.cshtml", Model.featuredPlayer)
+                    <br />
+                    <div class="row">
+                        <button onclick="location.href='@Url.Action("Index", "Roster")'" class="card-button">View Roster</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-4">
+        <div class="card" name="stats">
+            <div class="card-header">
+                <img onclick="location.href='@Url.Action("Index", "Statistics")'" src="~/Content/Images/acha_square.png" />
+                <h2 onclick="location.href='@Url.Action("Index", "Statistics")'">Team Leaders</h2>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12 small-table-font">
+                        @Html.Partial("~/Views/Statistics/StatsTablePartial.cshtml", Model.scoringLeaders)
+                    </div>
+                </div>
+                <div class="row">
+                    <button onclick="location.href='@Url.Action("Index", "Statistics")'" class="card-button">View Statistics</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" name="seasonTicketsSmall">
+            <div class="card-header">
+                <img class="pic-smaller" onclick="location.href='@Url.Action("SeasonTickets", "Home")'" src="~/Content/Images/icon_ticket.png" />
+                <h2 onclick="location.href='@Url.Action("SeasonTickets", "Home")'">Tickets</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <p class="caption">Order your season tickets today!</p>
+                <br />
+                <button onclick="location.href='@Url.Action("SeasonTickets", "Home")'" class="card-button">Season Tickets</button>
+            </div>
+        </div>
+        <div class="card" name="social">
+            <div class="card-header">
+                <img src="~/Content/Images/thumbs-up.png" />
+                <h2>Follow Us</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <p>Stay connected with the latest news and scores</p>
+                <div class="row" align="center">
+                    <div class="col-xs-4">
+                        <a href="https://www.facebook.com/groups/152372571767/"><img class="card-img-link" src="~/Content/Images/facebook_icon.png" /></a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="https://twitter.com/UNM_Lobo_Hockey"><img class="card-img-link" src="~/Content/Images/twitter_icon.png" /></a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="https://www.instagram.com/unmlobohockey/"><img class="card-img-link" src="~/Content/Images/instagram_icon.png" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>Record</h2>
+            </div>
+            <div class="card-content">
+                <br>
+                <div class="row">
+                    <center>
+                        <div class="col-xs-4">
+                            <b>W</b>
+                            <p>@Model.wins</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <b>L</b>
+                            <p>@Model.losses</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <b>OT</b>
+                            <p>@Model.otls</p>
+                        </div>
+                    </center>
+                </div>
+                <hr />
+                <button class="card-button" onclick="location.href='@Url.Action("Index", "Games")'">All Games</button>
+
+            </div>
+        </div>
+        @*<div class="card" name="roster">
+                <div class="card-header">
+                    <img onclick="location.href='@Url.Action("Index", "Roster")'" src="~/Content/Images/lobo_side.png" />
+                    <h2 onclick="location.href='@Url.Action("Index", "Roster")'">Roster</h2>
+                </div>
+                <div class="card-content">
+                    <br />
+                    <p class="caption">View our team roster and bios! Meet the players on UNMLoboHockey.com</p>
+                    <br />
+                    <button onclick="location.href='@Url.Action("Index", "Roster")'" class="card-button">View Roster</button>
+                </div>
+            </div>*@
+        @*<div class="card" name="stats">
+                <div class="card-header">
+                    <img onclick="location.href='http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=statistics&level=team&id=508774&league_id=1800&conference_id=1152&division_id=76940&division_id=76940&team_id=508774'" src="~/Content/Images/acha_square.png" />
+                    <h2 onclick="location.href='http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=statistics&level=team&id=508774&league_id=1800&conference_id=1152&division_id=76940&division_id=76940&team_id=508774'">Statistics</h2>
+                </div>
+                <div class="card-content">
+                    <br />
+                    <p class="caption">View our team and individual statistics on ACHAhockey.org</p>
+                    <br />
+                    <button onclick="location.href='http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=statistics&level=team&id=508774&league_id=1800&conference_id=1152&division_id=76940&division_id=76940&team_id=508774'" class="card-button">View Statistics</button>
+                </div>
+            </div>*@
+        <div class="card" name="standings">
+            <div class="card-header">
+                <img onclick="location.href = 'http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=standings&level=conference&id=1152&league_id=1800&conference_id=1152'" src="~/Content/Images/acha_square.png" />
+                <h2 onclick="location.href = 'http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=standings&level=conference&id=1152&league_id=1800&conference_id=1152'">Standings</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <p class="caption">View the Pacific Regional Standings on ACHAhockey.org</p>
+                <br />
+                <button onclick="location.href = 'http://achahockey.org/view/achahockey/men-s-d1/teams-361?type=standings&level=conference&id=1152&league_id=1800&conference_id=1152'" class="card-button">View Standings</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var gameDate = '@ViewBag.GameDate';
+    $("#clock")
+    .countdown(gameDate, function (event) {
+        $('#days').text(
+              event.strftime('%D')
+            );
+        $('#hours').text(
+            event.strftime('%H')
+            );
+        $('#minutes').text(
+            event.strftime('%M')
+            );
+        $('#seconds').text(
+            event.strftime('%S')
+            );
+    });
+    $(document).ready(function () {
+        $('#pnlDetails').css('display', 'block');
+        $('#pnlBio').css('display', 'none');
+        $('#btnDetails').click();
+    });
+    $('.card-tab-button').on('click', function () {
+        $('.card-tab-button').removeClass('selected');
+        $(this).addClass('selected');
+        if (this.id == 'btnDetails') {
+            $('#pnlDetails').css('display', 'block');
+            $('#pnlBio').css('display', 'none');
+        }
+        else if (this.id == 'btnBio') {
+            $('#pnlDetails').css('display', 'none');
+            $('#pnlBio').css('display', 'block');
+        }
+    });
+</script>

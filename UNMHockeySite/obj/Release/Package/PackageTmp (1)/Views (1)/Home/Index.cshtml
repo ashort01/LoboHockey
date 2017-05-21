@@ -1,0 +1,100 @@
+﻿@model UNMHockeySite.Models.Game
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (Model.IsHome == true)
+{
+    ViewBag.GameTitle = "Lobos vs. " + Model.Opponent;
+    ViewBag.GameDateTime = Model.Date.Value.ToShortDateString() + " " + Model.Date.Value.ToShortTimeString();
+}
+else if (Model.IsHome == false)
+{
+    ViewBag.GameTitle = "Lobos @" + Model.Opponent;
+}
+else
+{
+    ViewBag.GameTitle = "TBA";
+}
+
+<center>
+    <table class="home-page-table">
+        <tr>
+            <td>
+                <table class="home-page-table-first-column">
+                    <tr>
+                        <td>
+                            <div class="schedule">
+                                <a href='@Url.Action("Index", "Games")'>
+                                    <h2><span>schedule</span></h2>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="season-tickets">
+                                <a href='@Url.Action("SeasonTickets", "Home")'>
+                                    <h2><span>season tickets</span></h2>
+                                    </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div class="next-game">
+                    <a href='@Url.Action("Details","Games", new {id = Model.Id})'>
+                        <h2><span>next game</span></h2>
+                    </a>
+                        <br />
+                        <br />
+
+
+                        @if (Model.IsHome == true)
+                        {
+                            <a href='@Url.Action("Details","Games", new {id = Model.Id})'>
+                                <h3><span>@ViewBag.GameTitle<br />@ViewBag.GameDateTime<br />outpost ice arena</span></h3>
+                            </a>
+                        }
+                        else if (Model.IsHome == false)
+                        {
+                            <a href='@Url.Action("Details","Games", new {id = Model.Id})'>
+                                <h3>
+                                    <span>
+                                        @ViewBag.GameTitle <br /> @Model.Date.Value.ToShortDateString()<br />away
+                                    </span>
+                                </h3>
+                            </a>
+                        }
+                        else
+                        {
+                            <h3><span>TBA</span></h3>
+                        }
+</div>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+    @*<table class="table-center-page">
+            <tr>
+                <td align="center">
+                    <div class="jumbotron" style="opacity:.8;">
+                        <center>
+                            <h1>UNM Hockey</h1><img src="~/Content/Images/logo_sticks.jpeg" width="200" />
+                            <p class="lead">Welcome to the official webiste of the New Mexico Lobos Hockey team</p>
+                        </center>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <a href="http://www.mstlaw.com/"><img src="~/Content/Images/logo_millerStratvert.jpg" style="max-width:600px; width:80%; padding:10px" /></a>
+                    <a href="http://www.mccarthy.com/"><img src="~/Content/Images/logo_McCarthy.jpg" style="max-width:600px; width:80%; padding:10px" /></a>
+                </tdalign="center">
+            </tr>
+        </table>*@
+
+</center>

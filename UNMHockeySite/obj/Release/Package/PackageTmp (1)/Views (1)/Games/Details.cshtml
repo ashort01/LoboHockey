@@ -1,0 +1,125 @@
+﻿@model UNMHockeySite.Models.Game
+
+@if (Model.IsHome == true)
+{
+    ViewBag.Title = "UNM Lobos vs. " + Model.Opponent;
+}
+@if (Model.IsHome == false)
+{
+    ViewBag.Title = "UNM Lobos @" + Model.Opponent;
+}
+<center>
+    <div class="jumbotron jumbotron-slim">
+        <table class="table info-table">
+            <caption class="jumbotron-header">
+                @ViewBag.Title<br /><img src="~/Content/Images/lobo.png" style="padding-bottom:10px" /><br />
+            </caption>
+
+            <tbody class="jumbotron-content-text">
+                <tr>
+                    <td>
+                        <img src="~/Content/Images/icon_date.png" />
+                    </td>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        @Model.Date.Value.Date.ToShortDateString()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/Content/Images/icon_time.png" />
+                    </td>
+                    <td>
+                        Time
+                    </td>
+                    <td>
+                        @Model.Date.Value.ToShortTimeString()
+                    </td>
+                </tr>
+                <tr>
+
+                    @if (Model.IsHome == true)
+                    {
+                        <td>
+                            <a target="_blank" href="https://www.google.com/maps/place/9530+Tramway+Blvd+NE+Albuquerque+NM+87122"><img src="~/Content/Images/icon_location.png" width="30" /></a>
+                        </td>
+                    }
+                    @if (Model.IsHome == false)
+                    {
+                        <td>
+                            <img src="~/Content/Images/icon_location.png" />
+                        </td>
+                    }
+                    <td>
+                        Location
+                    </td>
+
+                    @if (Model.IsHome == true)
+                    {
+                        <td>
+                            <a target="_blank" href="http://www.google.com/search?q=Outpost+Ice+Arena"><p>Outpost Ice Arena</p> </a>
+                        </td>
+                    }
+                    @if (Model.IsHome == false)
+                    {
+                        <td>
+                            <p>Away</p>
+                        </td>
+                    }
+
+                </tr>
+                @if (Model.IsHome == true)
+                {
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @if (Model.TeamScore != null && Model.OpponentScore != null)
+    {
+        <div class="jumbotron jumbotron-slim">
+            <h2 style="font-size:5.0vmin">Results </h2>
+        </div>
+    }
+    @if (Model.IsHome == true && (Model.OpponentScore == null && Model.TeamScore == null))
+    {
+        <div class="jumbotron jumbotron-slim">
+            <table class="table">
+                <caption class="jumbotron-header">Tickets</caption>
+                <caption class="jumbotron-caption">*Tickets sold at front door</caption>
+                <tbody class="jumbotron-content-text">
+                    <tr>
+                        <td>
+                            <img src="~/Content/Images/icon_ticket.png" />
+                        </td>
+                        <td>
+                            General Admission
+                        </td>
+                        <td>
+                            $5
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="~/Content/Images/icon_ticket.png" />
+                        </td>
+                        <td>
+                            With UNM Student Id
+                        </td>
+                        <td>
+                            $3
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+
+</center>

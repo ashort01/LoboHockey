@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Opponent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsHome" Type="Boolean" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="TeamScore" Type="Int32" />
+    <Property Name="OpponentScore" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Player1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Birthplace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RosterId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="Int32" />
+    <Property Name="Birthdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StatsYears" Relationship="Self.FK_PlayerId" FromRole="Player" ToRole="StatsYear" />
+    <NavigationProperty Name="Roster" Relationship="Self.FKRosterId" FromRole="Player" ToRole="Roster" />
+  </EntityType>
+  <EntityType Name="Roster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Players" Relationship="Self.FKRosterId" FromRole="Roster" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="StatsYear">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Goals" Type="Int32" />
+    <Property Name="Assists" Type="Int32" />
+    <Property Name="Goals_Against_Average" Type="Double" />
+    <Property Name="Saves" Type="Int32" />
+    <Property Name="Shots_Against" Type="Int32" />
+    <Property Name="PlayerId" Type="Int32" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_PlayerId" FromRole="StatsYear" ToRole="Player" />
+  </EntityType>
+  <Association Name="FK_PlayerId">
+    <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+    <End Role="StatsYear" Type="Self.StatsYear" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatsYear">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKRosterId">
+    <End Role="Roster" Type="Self.Roster" Multiplicity="0..1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="RosterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeamEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="Rosters" EntityType="Self.Roster" />
+    <EntitySet Name="StatsYears" EntityType="Self.StatsYear" />
+    <AssociationSet Name="FK_PlayerId" Association="Self.FK_PlayerId">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="StatsYear" EntitySet="StatsYears" />
+    </AssociationSet>
+    <AssociationSet Name="FKRosterId" Association="Self.FKRosterId">
+      <End Role="Roster" EntitySet="Rosters" />
+      <End Role="Player" EntitySet="Players" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

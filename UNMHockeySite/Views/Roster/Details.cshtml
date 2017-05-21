@@ -1,0 +1,93 @@
+﻿@model UNMHockeySite.Models.PlayerStatsBioViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/lobo_side.png" />
+                <h2>@Model.player.Name</h2>
+            </div>
+            <div class="card-tab-selector">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <center>
+                            <button id="btnDetails" class="card-tab-button details">Details</button>
+                        </center>
+                    </div>
+                    <div class="col-xs-6">
+                        <center>
+                            <button id="btnBio" class="card-tab-button details">Bio</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                @Html.Partial("PlayerContent",Model.player)
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/bar_chart_icon.png" />
+                <h2>Statistics</h2>
+            </div>
+            <div class="card-tab-selector">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <center>
+                            <button id="btnCurrent" class="card-tab-button stats">This Season</button>
+                        </center>
+                    </div>
+                    <div class="col-xs-6">
+                        <center>
+                            <button id="btnCareer" class="card-tab-button stats">Career</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                @Html.Partial("PlayerStats", Model.stats)
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#pnlDetails').css('display', 'block');
+        $('#pnlBio').css('display', 'none');
+        $('#pnlCareer').css('display', 'none');
+        $('#pnlCurrent').css('display', 'block');
+        $('#btnDetails').click();
+        $('#btnCurrent').click();
+    });
+    $('.details').on('click', function () {
+        $('.details').removeClass('selected');
+        $(this).addClass('selected');
+        if (this.id == 'btnDetails') {
+            $('#pnlDetails').css('display', 'block');
+            $('#pnlBio').css('display', 'none');
+        }
+        else if (this.id == 'btnBio') {
+            $('#pnlDetails').css('display', 'none');
+            $('#pnlBio').css('display', 'block');
+        }
+    });
+    $('.stats').on('click', function () {
+        $('.stats').removeClass('selected');
+        $(this).addClass('selected');
+        if (this.id == 'btnCurrent') {
+            $('#pnlCareer').css('display', 'none');
+            $('#pnlCurrent').css('display', 'block');
+        }
+        else if (this.id == 'btnCareer') {
+            $('#pnlCurrent').css('display', 'none');
+            $('#pnlCareer').css('display', 'block');
+        }
+    });
+</script>
