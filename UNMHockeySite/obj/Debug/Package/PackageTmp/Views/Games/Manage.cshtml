@@ -29,14 +29,14 @@
                 <table class="table info-table">
                     @foreach (var item in Model.games)
                     {
-                        <tr onclick="location.href='@Url.Action("Edit","Games", new {id = item.Id})';">
+                        <tr>
                             <td align="left">
                                 @if (item.IsHome == true)
-                {
+                                {
                                     <img src="~/Content/Images/lobo_side.png" />
                                 }
                                 @if (item.IsHome == false)
-                {
+                                {
                                     <img src="~/Content/Images/icon_away.png" />
                                 }
 
@@ -73,7 +73,7 @@
                             }
                             <td align="left">
                                 @if (item.IsHome == true)
-                {
+                                {
 
                                     <p>vs.&nbsp;@Html.DisplayFor(modelItem => item.Opponent)</p>
                                 }
@@ -84,11 +84,18 @@
 
                             </td>
                             <td>
-                                @Html.ActionLink("Enter Score", "Edit", new { id = item.Id , seasonID = item.SeasonId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id , seasonID = item.SeasonId})
-                        </td>
+                                <p>@Html.ActionLink("Enter Score", "Edit", new { id = item.Id, seasonID = item.SeasonId })</p>
 
-                    </tr>
+                            </td>
+                            <td>
+                                <p>@Html.ActionLink("Edit Game Photos", "EditGamePhotos", new { id = item.Id, seasonID = item.SeasonId })</p>
+                            </td>
+                            <td>
+                                <p> @Html.ActionLink("Delete", "Delete", new { id = item.Id, seasonID = item.SeasonId })</p>
+                            </td>
+
+
+                        </tr>
                     }
                 </table>
             </div>

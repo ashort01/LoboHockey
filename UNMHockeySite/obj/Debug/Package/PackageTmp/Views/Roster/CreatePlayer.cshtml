@@ -25,18 +25,21 @@
                         @Html.HiddenFor(model => model.User.UserName)
                         @Html.HiddenFor(model => model.isEdit)
                         <div class="form-group">
-                            
+
                             <label class="control-label col-md-2" for="upload">Upload Photo</label>
-                            @if(Model.isEdit == true)
+                            @if (Model.PlayerImage != null)
                             {
-                                <label id="uploadWarning" class="text-danger">Please re-upload photo</label>
-                                <div class="col-md-10">
-                                    <input type="file" id="upload" name="file" style="width: 100%;" class="form-control alert-danger" />
-                                </div>
+                                    <buton class="card-button" onclick="UploadPhoto()">Change Photo</buton>
+                                    <div id="pnPhoto" class="profile-picture-container">
+                                        <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
+                                    </div>
+                                    <div id="pnlUpload" class="col-md-10 hidden">
+                                        <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
+                                    </div>
                             }
                             else
                             {
-                                <div class="col-md-10">
+                                <div id="pnlUpload" class="col-md-10">
                                     <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
                                 </div>
                             }
@@ -195,4 +198,9 @@
         $("#uploadWarning").hide();
         $('#upload').removeClass("alert-danger");
     });
+
+    function UploadPhoto() {
+        $("#pnlPhoto").hide();
+        $("#pnlUpload").show();
+    }
 </script>

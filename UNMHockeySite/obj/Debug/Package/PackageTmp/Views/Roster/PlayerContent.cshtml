@@ -4,7 +4,7 @@
         <br />
         <div class="col-xs-6">
             <center>
-                @if (Model.Picture != null)
+                @if (Model.PlayerImage != null)
                 {
                     <div class="profile-picture-container">
                         <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
