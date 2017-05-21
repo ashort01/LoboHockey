@@ -326,6 +326,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="App_Data\TeamDB.mdf" />
     <Content Include="App_Data\TeamDB_log.ldf">
       <DependentUpon>TeamDB.mdf</DependentUpon>
