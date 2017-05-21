@@ -28,10 +28,7 @@ namespace UNMHockeySite
         public static void SendOrderEmail(EmailFormModel model)
         {
             var message = new SendGridMessage();
-            //message.AddTo("ghd8989@msn.com");  // replace with valid value 
-            message.AddCc("austinshort1@gmail.com");
-            //message.AddCc("biggcanuck@comcast.net");
-            //message.AddCc("mharvey64@gmail.com");
+            message.AddCc(System.Configuration.ConfigurationManager.AppSettings["email"].Split(';')[0]);
             message.From = new MailAddress("donotreply@LoboHockeyWebsite.com");  // replace with valid value
             message.Subject = "New Season Ticket Order";
             message.Html = "There is a new season ticket order! Someone filled out the form on the website and is requesting you contact them."
