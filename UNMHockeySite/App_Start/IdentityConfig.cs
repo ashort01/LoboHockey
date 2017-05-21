@@ -28,10 +28,10 @@ namespace UNMHockeySite
         public static void SendOrderEmail(EmailFormModel model)
         {
             var message = new SendGridMessage();
-            message.AddTo("ghd8989@msn.com");  // replace with valid value 
+            //message.AddTo("ghd8989@msn.com");  // replace with valid value 
             message.AddCc("austinshort1@gmail.com");
-            message.AddCc("biggcanuck@comcast.net");
-            message.AddCc("mharvey64@gmail.com");
+            //message.AddCc("biggcanuck@comcast.net");
+            //message.AddCc("mharvey64@gmail.com");
             message.From = new MailAddress("donotreply@LoboHockeyWebsite.com");  // replace with valid value
             message.Subject = "New Season Ticket Order";
             message.Html = "There is a new season ticket order! Someone filled out the form on the website and is requesting you contact them."
@@ -39,8 +39,8 @@ namespace UNMHockeySite
                 + model.FromEmail + "<br />" + "Phone Number: " + model.PhoneNumber + "<br />" + "Message (optional): " + model.Message;
 
             // Create network credentials to access your SendGrid account
-            var username = "azure_c028166f60bd307a5ec52793035f5590@azure.com";
-            var pswd = "AJiscool-1";
+            var username = System.Configuration.ConfigurationManager.AppSettings["SendGridUsername"];
+            var pswd = System.Configuration.ConfigurationManager.AppSettings["SendGridPassword"];
 
             var credentials = new NetworkCredential(username, pswd);
             // Create an Web transport for sending email.
