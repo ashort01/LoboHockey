@@ -10,7 +10,10 @@ namespace UNMHockeySite.Models
 {
     public class GameManagerViewModel
     {
+        public GameManagerViewModel() { }
+
         public int Id { get; set; }
+        public int SeasonId { get; set; }
         public string Opponent { get; set; }
         public Nullable<bool> IsHome { get; set; }
         [DisplayFormat(DataFormatString = "{0: M/d/yyyy  h:mm tt}")]
@@ -18,9 +21,12 @@ namespace UNMHockeySite.Models
         public Nullable<int> TeamScore { get; set; }
         public Nullable<int> OpponentScore { get; set; }
         public string OpponentAbbr { get; set; }
-        public List<GoalViewModel> goals {get; set;}
+        public List<GoalViewModel> goals { get; set; }
         public int? teamShots { get; set; }
         public int? opponentShots { get; set; }
+        public IEnumerable<Player> currentPlayers { get;set; }
+        public IEnumerable<Player> selectedPlayers { get; set; }
+        public string[] selectedPlayerIds { get; set; }
 
     }
 }

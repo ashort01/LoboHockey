@@ -26,6 +26,7 @@ namespace UNMHockeySite.Models
         public virtual DbSet<Game_Player> GamePlayer { get; set; }
         public virtual DbSet<PlayerRequest> PlayerRequest { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<HomePageHit> HomePageHits { get; set; }
 
 
 

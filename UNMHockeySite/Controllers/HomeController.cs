@@ -17,14 +17,10 @@ namespace UNMHockeySite.Controllers
         // GET: Next Game
         public ActionResult Index()
         {
-            HomePageViewModel vm = new HomePageViewModel();
-            vm.nextFiveGames = DataService.GetNextFiveGames();
-            vm.nextGame = DataService.GetNextGame();
-            vm.featuredPlayer = DataService.GetFeaturedPlayer();
-            vm.wins = DataService.GetWins();
-            vm.losses = DataService.GetLosses();
-            vm.otls = DataService.GetOtls();
-            vm.scoringLeaders = DataService.GetScoringLeaders();
+
+            DataService.IncrementHitCount();
+            HomePageViewModel vm = DataService.GetHomePage();
+            //vm.scoringLeaders = DataService.GetScoringLeaders(DataService.GetCurrentSeason().Id);
             return View(vm);
         }
 
@@ -35,40 +31,22 @@ namespace UNMHockeySite.Controllers
             return View();
         }
 
+        public ActionResult Advertisement()
+        {
+            return View();
+        }
+
+        public ActionResult Video()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        [HttpGet]
-        public ActionResult SeasonTickets()
-        {
-            EmailFormModel model = new EmailFormModel();
-            bool state = ModelState.IsValid;
-            return View(model);
-        }
-
-        public ActionResult OrderSuccess()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ActionName("SeasonTickets")]
-        public async Task<ActionResult> SendEmailOrder(EmailFormModel model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                EmailService.SendOrderEmail(model);
-                return RedirectToAction("OrderSuccess");
-            }
-            return View(model);
-        }
-
-
 
     }
 }

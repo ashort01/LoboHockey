@@ -14,30 +14,46 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datepicker")
+    @Scripts.Render("~/bundles/timepicker")
     @Scripts.Render("~/bundles/countdown")
+    @Scripts.Render("~/bundles/crop")
     @Scripts.Render("~/bundles/fullcalendarjs")
     @Styles.Render("~/Content/fullcalendarcss")
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/datepickercss")
+    @Styles.Render("~/Content/timepickercss")
     @RenderSection("scripts", required: false)
     @* Favicon *@
     <link rel="icon" type="image/png" href="@Url.Content("~/Content/Images/lobo_side.png")" />
 </head>
 <body>
-    <div class="top-bar-image">
-        <div class="top-bar-design-image">
-            <img class="img-responsive" src="~/Content/Images/top_bar.png" align="left" width="550" usemap="imagemap" />
-            <map name="imagemap">
-                <area shape="rect" coords="230,20,50,120" href='@Url.Action("Index", "Home")' alt="Home">
-            </map>
+    <div class="banner" id="banner">
+        <div class="row upper-banner ">
+            <div class="container">
+                <div class="col-xs-1">
+                    <img src="~/Content/Images/acha_transparent.png" width="50" style="margin-left:20px" />
+                </div>
+                <div class="col-xs-10">
+                    <center>
+                        <p><b>THE OFFICIAL SITE OF UNM HOCKEY</b></p>
+                    </center>
+                </div>
+                <div class="col-xs-1">
+                    <img src="~/Content/Images/acha_transparent.png" width="50" style="margin-left:20px" />
+                </div>
+            </div>
         </div>
-        <div class="nav-bar-title">
-            <img src="~/Content/Images/LoboTitle.png" align="middle" width="400" hspace="50" />
+            <div class="row lower-banner">
+                <div class="container">
+                    <div class="lower-banner-slogan">
+                        <h1> the legs feed the wolf </h1>
+                    </div>
+            </div>
         </div>
     </div>
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
 
-        </div>
+    <div id="topnavbar" class="navbar navbar-inverse navbar-static-top">
         <div class="container">
 
             <div class="navbar-header">
@@ -47,9 +63,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href='@Url.Action("Index", "Home")' class=navbar-brand>
-                    <img border="0" alt="Home " src="~/Content/Images/lobo_side.png" width="20">
+                    <img src="~/Content/Images/lobo.png" class="navbar-big-image"/>
+                    @*<img border="0" alt="Home " src="~/Content/Images/lobo_side.png" width="20">*@
                 </a>
-                @Html.ActionLink("UNM Hockey", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("UNM Hockey", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbar-main-link unm-font" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -105,3 +122,10 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    $('#topnavbar').affix({
+        offset: {
+            top: $('#banner').height()
+        }   
+    });
+</script>

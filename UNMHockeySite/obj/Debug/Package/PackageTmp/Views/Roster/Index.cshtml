@@ -1,17 +1,31 @@
-﻿@model List<UNMHockeySite.Models.Player>
+﻿@model UNMHockeySite.Models.RosterViewModel
 @{
     ViewBag.Title = "Index";
 }
 <div class="row">
-    <div class="col-md-8 col-md-push-2">
+    <div class="col-md-10 col-md-push-1">
         <div class="card">
             <div class="card-header">
                 <img src="~/Content/Images/lobo_side.png" />
                 <h2>Roster</h2>
             </div>
             <div class="card-content">
-                <center><b>Click on a player to view bio</b></center>
-
+                <br />
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btnGo" class="btn btn-default">Go</button>
+                            </span>
+                            @Html.DropDownListFor(m => m.SelectedSeason, Model.Seasons, new { @class = "form-control" })
+                            @Html.HiddenFor(m => m.SelectedSeason, new { @id = "hdnSelectedSeason" })
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-sm-6">
+                    <center><b>Click on a player to view bio</b></center>
+                </div>
                 <table class="table info-table clickable-table">
                     <thead>
                     <th>
@@ -36,7 +50,7 @@
                     </th>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.players)
                         {
                             <tr onclick="location.href='@Url.Action("Details","Roster", new {id = item.Id})';">
                                 <td align="left">
@@ -50,12 +64,12 @@
                                     </p>
                                 </td>
                                 <td align="left">
-                                        @if (item.BirthDay != null && item.BirthMonth != null && item.BirthYear != null)
-                                        {
-                                            <p>
+                                    @if (item.BirthDay != null && item.BirthMonth != null && item.BirthYear != null)
+                                    {
+                                        <p>
                                             @item.BirthMonth/@item.BirthDay/@item.BirthYear
-                                            </p>
-                                        }
+                                        </p>
+                                    }
                                 </td>
                                 <td align="left">
                                     <p>
@@ -70,3 +84,12 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $("#SelectedSeason").change(function () {
+        $('#hdnSelectedSeason').val($('#SelectedSeason').val());
+    });
+    $("#btnGo").click(function () {
+        window.location = '/Roster/Index?seasonId=' + $('#hdnSelectedSeason').val();
+    });
+</script>

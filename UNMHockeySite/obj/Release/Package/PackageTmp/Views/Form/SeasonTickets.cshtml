@@ -1,0 +1,61 @@
+﻿@model UNMHockeySite.Models.EmailFormModel
+@{
+    ViewBag.Title = "Season Tickets";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="jumbotron">
+        <h2 class="jumbotron-header">@ViewBag.Title</h2>
+            <p class="jumbotron-caption">Please fill out the form below, and you will be contacted with an opportunity to buy season tickets.</p>
+               @Html.ValidationSummary()
+         <hr />
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromName, new { @class = "jumbotron-caption" })
+                    @Html.ValidationMessageFor(m => m.FromName, "", new { @class = "text-danger jumbotron-caption" })
+                    @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromEmail, new { @class = "jumbotron-caption" })
+                    @Html.ValidationMessageFor(m => m.FromEmail, "", new { @class = "text-danger jumbotron-caption" })
+                    @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "jumbotron-caption" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger jumbotron-caption" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message, new { @class = "jumbotron-caption" })
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger jumbotron-caption" })
+                </div>
+            </div>
+
+            @* below is the div that holds the captcha *@
+            <div class="row">
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LeERTgUAAAAANAud3ALNAbCRICRCi-rZfeyxjGk"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" value="Submit Order Request" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+@* script for the recaptcha *@
+<script src='https://www.google.com/recaptcha/api.js'></script>

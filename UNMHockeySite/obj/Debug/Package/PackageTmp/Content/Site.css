@@ -1,26 +1,74 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background-color:#a32929;
     background-image: url(Images/flyer.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50% 20%;
+    background-color:#cecece;
+    background-attachment: fixed;
+    background-position: 0px 40px;
+}
 
+@font-face {
+    font-family: UNMFont;
+    src: url(/Content/fonts/UNMFont.otf);
+}
+
+.unm-font {
+    font-family: UNMFont !important;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: UNMFont;
+}
+
+.timeline-container
+{
+    max-height:500px;
+    overflow-y:scroll;
 }
 .hover{
     cursor:pointer;
 }
 
+br img{
+    border: 0 none;
+     text-decoration: none;
+}
+.image-link
+{
+  text-decoration: none;
+}
+
 .image-circle{
     border-radius:50%;
 }
-.profile-picture {
+
+.profile-picture-sm {
+    width:45px !important;
+    border-radius:100%;
+    vertical-align:middle;
+    border: 0 none;
+
+}
+
+.profile-picture-md {
     max-width:100%;
+    max-height:90px;
+    border-radius:100%;
+}
+.profile-picture-container-md {
+    max-width:100%;
+    overflow:hidden;
+}
+.profile-picture {
+    max-width:100px;
+    max-height:100px;
+    border-radius:100%;
 
 }
 .profile-picture-container {
-    max-height:250px;
+    max-width:50%;
     overflow:hidden;
 }
 
@@ -240,12 +288,57 @@
 }
 
 /*Navbar stuff*/
+.upper-banner{
+    background-color:#e0e0e0;
+    height:24px;
+}
+
+.lower-banner{
+    background-color: #a32929;
+    color:#e0e0e0;
+    font-size:72px;
+    height:70px;
+}
+.lower-banner h1{
+    position:absolute;
+    font-size: 52px;
+    top:12px;
+}
+
+.banner {
+    width: 100%;
+}
+
+.lower-banner-slogan{
+    margin-left:150px;
+}
+.navbar-main-link {
+    margin-left:40px !important;
+}
+
+.navbar-big-image{
+    position:absolute;
+    top:-60px;
+
+}
+topnavbar {
+    margin: 0;
+}
+#topnavbar.affix .navbar-big-image {
+    display:none;
+}
+
+#topnavbar.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 .navbar-inverse { 
     background-color: #2f2f2f !important; 
     border:none;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,.7);
     font-weight:500;
-
 }
 .navbar-brand {
     text-decoration:none;
@@ -253,8 +346,24 @@
 
 .navbar-link {
     text-decoration:none;
-    
 }
+
+
+@media screen and (max-width: 800px) {
+    /*.lower-banner-slogan {
+        display: none;
+    }*/
+    .lower-banner h1{
+        position:absolute;
+        font-size:5.0vmin;
+        margin-left:-30px !important;
+    }
+    .upper-banner{
+        display:none;
+    }
+}
+
+
 .nav-bar-title {
     text-align:center;
     margin-top:38px;
@@ -417,37 +526,7 @@ select,
 textarea {
     max-width: 280px;
 }
-.top-bar-image {
-    position:relative;
-    height: 140px;
-    display: inline-block;
-    width: 100%;
-    background-image:url(Images/top_bar_background.png);
-     background-repeat: no-repeat;
-    background-size:cover;
-    margin:0px;
-    background-position:0% 0%;
-    z-index: -2;
-}
 
-
-.top-bar-design-image {
-    position: absolute;
-    top: -26px;
-    left: -16px;
-    padding:0px;
-    margin:0px;
-    z-index: -1;
-
-}
-
-
-@media screen and (max-width: 900px) {
-    .top-bar-image {
-        display: none;
-    }
-
-}
 /*Table stuff*/
 .clickable-table tbody tr:hover 
 {
@@ -511,32 +590,6 @@ textarea {
     .home-page-table td {
         width:0%;
     }
-}
-.next-game
-{
-    height:100%;
-    background-image: url(Images/faceoff.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: 36% 0%;
-    
-}
-
-.season-tickets
-{
-    height:100%;
-    background-image: url(Images/big_hit.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: 36% 0%;
-}
-.schedule
-{
-    height:100%;
-    background-image: url(Images/skating.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: 36% 0%;
 }
 
 

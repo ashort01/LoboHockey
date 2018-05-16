@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UNMHockeySite.Models.GameViewModel>
+﻿@model UNMHockeySite.Models.ScheduleViewModel
 
 @{
     ViewBag.Title = "Schedule";
@@ -34,9 +34,23 @@
                     <h2>Schedule</h2>
                 </div>
                 <div class="card-content">
-                    <center><b>Click on a game to view details</b></center>
+                    <br />
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button id="btnGo" class="btn btn-default">Go</button>
+                                </span>
+                                @Html.DropDownListFor(m => m.SelectedSeason, Model.Seasons, new { @class = "form-control" })
+                                @Html.HiddenFor(m => m.SelectedSeason, new { @id = "hdnSelectedSeason" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <center><b>Click on a game to view details</b></center>
+                    </div>
                     
-                    @Html.Partial("ScheduleTablePartial",Model)
+                    @Html.Partial("ScheduleTablePartial",Model.GameList)
                 </div>
             </div>
         </div>
@@ -47,6 +61,8 @@
 @section scripts{
 
     <script type="text/javascript">
+
+
         $(document).ready(function () {
             $('#calendar').fullCalendar({
                 theme: true,
@@ -89,6 +105,13 @@
                     });
                 }
 
+            });
+
+            $("#SelectedSeason").change(function () {
+                $('#hdnSelectedSeason').val($('#SelectedSeason').val());
+            });
+            $("#btnGo").click(function () {
+                window.location = '/Games/Index?seasonId=' + $('#hdnSelectedSeason').val();
             });
         });
 

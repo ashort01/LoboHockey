@@ -17,13 +17,14 @@ namespace UNMHockeySite.Controllers
         private TeamEntities db = new TeamEntities();
 
         // GET: Games
-        public ActionResult Index()
+        public ActionResult Index(int? seasonId)
         {
-            Season s = DataService.GetCurrentSeason();
-            List<Game> games = DataService.GetActiveGames(s.Id);
-            List<GameViewModel> gameVms = DataService.GetGameViewModels(games);
-
-            return View(gameVms);
+            if(seasonId == null)
+            {
+                seasonId = DataService.GetCurrentSeason().Id;
+            }
+            ScheduleViewModel vm = new ScheduleViewModel(seasonId.Value);
+            return View(vm);
         }
 
         // GET: Manage
@@ -56,10 +57,8 @@ namespace UNMHockeySite.Controllers
         // GET: Games/Create
         public ActionResult Create(int seasonId)
         {
-            Game g = new Game();
-            Season s = new Season();
-            s.Id = seasonId;
-            g.Season = s;
+            GameViewModel g = new GameViewModel();
+            g.SeasonId = seasonId;
             return View(g);
         }
 
@@ -119,13 +118,13 @@ namespace UNMHockeySite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Opponent,IsHome,Date,TeamScore,OpponentScore")] Game game)
+        public ActionResult Create(GameViewModel game)
         {
             if (ModelState.IsValid)
             {
-                db.Games.Add(game);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                DataService.CreateGame(game);
+
+                return RedirectToAction("Manage", new { seasonId = game.SeasonId });
             }
 
             return View(game);
@@ -164,8 +163,6 @@ namespace UNMHockeySite.Controllers
 
 
         // POST: Games/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Game game)
@@ -174,17 +171,30 @@ namespace UNMHockeySite.Controllers
             {
                 db.Entry(game).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("EditDetails", new { gameId = game.Id});
+                return RedirectToAction("EditGamePlayers", new { gameId = game.Id});
             }
             return View(game);
         }
 
+        [HttpGet]
+        public ActionResult EditGamePlayers(int gameId)
+        {
+            GameManagerViewModel g = DataService.GetGameManager(gameId);
+            return View(g);
+        }
+        [HttpPost]
+        public ActionResult EditGamePlayers(GameManagerViewModel game)
+        {
+            DataService.SaveGamePlayers(game);
+            return RedirectToAction("EditDetails", new { gameId = game.Id });
+        }
+
+
         //GET: Edit details
         [HttpGet]
-        public ActionResult EditDetails(int? gameId)
+        public ActionResult EditDetails(int gameId)
         {
-            Game game = db.Games.Find(gameId);
-            GameManagerViewModel g = DataService.GetGameManager(game);
+            GameManagerViewModel g = DataService.GetGameManager(gameId);
             return View(g);
         }
 
@@ -193,8 +203,9 @@ namespace UNMHockeySite.Controllers
         public ActionResult EditDetails(GameManagerViewModel game)
         {
             DataService.SaveStats(game);
-            return RedirectToAction("Manage");
+            return RedirectToAction("Manage", new { seasonId = game.SeasonId});
         }
+
 
 
         // GET: Games/Delete/5

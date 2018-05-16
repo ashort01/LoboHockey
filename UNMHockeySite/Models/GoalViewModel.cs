@@ -9,9 +9,10 @@ namespace UNMHockeySite.Models
 {
     public class GoalViewModel
     {
-        public GoalViewModel()
+        public GoalViewModel() { }
+        public GoalViewModel(int seasonId)
         {
-            Players = DataService.GetPlayersSelectList();
+            Players = DataService.GetPlayersSelectList(seasonId);
         }
         public int GoalPlayerId { get; set; }
         public int? Assist1PlayerId { get; set; }

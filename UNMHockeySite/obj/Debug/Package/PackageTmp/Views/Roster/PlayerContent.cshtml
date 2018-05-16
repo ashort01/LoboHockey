@@ -1,66 +1,46 @@
 ﻿@model UNMHockeySite.Models.Player
 <div class="row">
-    <div id="pnlDetails">
         <br />
-        <div class="col-xs-6">
-            <center>
-                @if (Model.PlayerImage != null)
-                {
-                    <div class="profile-picture-container">
-                        <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
-                    </div>
-                }
-                else
-                {
-                    <div class="profile-picture-container">
-                        <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
-                    </div>
-                }
-            </center>
-        </div>
-        <div class="col-xs-6">
-            <div class="row" style="margin-bottom:3.0vmin">
-                <div class="col-xs-12">
-                    <b>@Model.Name</b>
-                </div>
-            </div>
-
-            <div class="row" style="margin-bottom:3.0vmin">
-                <div class="col-xs-6">
-                    @if (!String.IsNullOrEmpty(Model.Position))
+        <div class="col-xs-12">
+            <div class="row">
+                <center>
+                    @if (Model.PlayerImage != null)
                     {
-                        <b>@Model.Position </b>
+                        <div class="profile-picture-container">
+                            <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
+                        </div>
                     }
-                </div>
-                <div class="col-xs-6">
-                    @if (!String.IsNullOrEmpty(Model.Number.ToString()))
+                    else
                     {
-                        <b>#@Model.Number</b>
+                        <div class="profile-picture-container">
+                            <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
+                        </div>
                     }
-                </div>
+                </center>
             </div>
             <div class="row">
-
-                <div class="col-xs-6">
+                <h2>@Model.Name  -  @Model.Number</h2>
+            </div>
+            <div class="row">
+                <center>
+                    @if (!String.IsNullOrEmpty(Model.Position))
+                    {
+                        <b>&nbsp;@Model.Position |</b>
+                    }
                     @if (!String.IsNullOrEmpty(Model.Height))
                     {
-                        <b>Height: </b><p>&nbsp;@Model.Height</p>
+                        <b>Height: &nbsp;@Model.Height |</b>
                     }
-                </div>
-                <div class="col-xs-6">
                     @if (!String.IsNullOrEmpty(Model.Weight.ToString()))
                     {
-                        <b>Weight: </b><p>&nbsp;@Model.Weight</p>
+                        <b>Weight: &nbsp;@Model.Weight</b>
                     }
-                </div>
-            </div>
+                </center>
+</div>
+    <hr />
         </div>
 
-    </div>
 
-
-
-    <div id="pnlBio">
         <div class="col-sm-12 col-xs-12 col-md-6">
             <center>
                 <br />
@@ -113,9 +93,9 @@
 
         <div class="row"></div>
         <div class="col-xs-12">
-            <hr />
             @if (!String.IsNullOrEmpty(Model.Bio))
             {
+                <hr />
                 <b style="margin-left:4.0vmin">Bio: </b><p class="long-paragraph-left">&nbsp; @Model.Bio</p>
             }
         </div>
@@ -149,4 +129,3 @@
             </center>
         </div>
     </div>
-</div>

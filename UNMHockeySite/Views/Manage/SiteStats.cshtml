@@ -1,0 +1,40 @@
+﻿@model UNMHockeySite.Models.HomePageHitsViewModel
+@{
+    ViewBag.Title = "SiteStats";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-push-3">
+        <div class="card">
+            <div class="card-header">
+                <img class="pic-smaller" src="~/Content/Images/logo_sticks.jpeg" />
+                <h2>Home Page Hits</h2>
+            </div>
+            <div class="card-content">
+                <br />
+                <div class="col-md-12 row">
+                    <b>Home Page hits count was started on Septemer 22nd, 2017</b>
+                </div>
+
+                <dl class="dl-horizontal">
+
+                    <dt>All Time: </dt>
+                    <dd>
+                        @Model.totalHits
+                    </dd>
+                    <dt>This Year: </dt>
+                    <dd>
+                        @Model.thisYearHits
+                    </dd>
+                    <dt>This Month: </dt>
+                    <dd>
+                        @Model.thisMonthHits
+                    </dd>
+                </dl>
+                <div>
+                    @Html.ActionLink("Back to Manage", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

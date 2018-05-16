@@ -2,127 +2,137 @@
 @{
     ViewBag.Title = "Statistics";
 }
-
 <div class="row">
-    <div class="col-sm-4">
-        <div class="card">
-            <div class="card-header">
-                <img src="~/Content/Images/lobo_side.png" />
-                <h2>Points</h2>
-            </div>
-            <div class="card-content">
-                <br />
-                <div class="row">
-                    <div class="col-xs-6">
-                        @if (Model.MostPoints.picture != null)
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostPoints.id })" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
-                            </div>
-                        }
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="row col-md-12">
-                            <b>@Model.MostPoints.name</b>
-                        </div>
-                        <div class="row col-md-12">
-                            <h2>@Model.MostPoints.points</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <div class="card-header">
-                <img src="~/Content/Images/lobo_side.png" />
-                <h2>Goals</h2>
-            </div>
-            <div class="card-content">
-                <br />
-                <div class="row">
-                    <div class="col-xs-6">
-                        @if (Model.MostGoals.picture != null)
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostGoals.id })" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
-                            </div>
-                        }
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="row col-md-12">
-                            <b>@Model.MostGoals.name</b>
-                        </div>
-                        <div class="row col-md-12">
-                            <h2>@Model.MostGoals.goals</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="card">
-            <div class="card-header">
-                <img src="~/Content/Images/lobo_side.png" />
-                <h2>Assists</h2>
-            </div>
-            <div class="card-content">
-                <br />
-                <div class="row">
-                    <div class="col-xs-6">
-                        @if (Model.MostAssists.picture != null)
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostAssists.id })" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="profile-picture-container">
-                                <img class="profile-picture-default" src="~/Content/Images/lobo.png" />
-                            </div>
-                        }
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="row col-md-12">
-                            <b>@Model.MostAssists.name</b>
-                        </div>
-                        <div class="row col-md-12">
-                            <h2>@Model.MostAssists.assists</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-9">
         <div class="card">
             <div class="card-header">
                 <img src="~/Content/Images/acha_square.png" />
                 <h2>Statistics</h2>
             </div>
             <div class="card-content">
+                <br />
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button id="btnGo" class="btn btn-default">Go</button>
+                        </span>
+                        @Html.DropDownListFor(m => m.SelectedSeason, Model.Seasons, new { @class = "form-control" })
+                        @Html.HiddenFor(m => m.SelectedSeason, new { @id = "hdnSelectedSeason" })
+                    </div>
+                </div>
                 @Html.Partial("StatsTablePartial", Model.PlayerList)
             </div>
         </div>
 
     </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-header">
+                <img src="~/Content/Images/lobo_side.png" />
+                <h2>Leaders</h2>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    @if (Model.MostPoints != null)
+                    {
+                        <br />
+                            <div class="row col-md-10 col-md-push-1">
+                        <center>
+                                @if (Model.MostPoints.picture != null)
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostPoints.id })';">
+                                            <img class="profile-picture-md" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostPoints.id })" /><br />
+                                            <span class="caption">@Model.MostPoints.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <img class="profile-picture-default" src="~/Content/Images/lobo.png" /><br />
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostPoints.id })';">
+                                            <span class="caption">@Model.MostPoints.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                <h4>
+                                    @Model.MostPoints.points Points
+                                </h4>
+                                <hr />
+                        </center>
+                            </div>
+
+                    }
+                    @if (Model.MostGoals != null)
+                    {
+                        <center>
+                            <div class="row col-md-10 col-md-push-1">
+                                @if (Model.MostGoals.picture != null)
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostGoals.id })';">
+                                            <img class="profile-picture-md" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostGoals.id })" /><br />
+                                            <span class="caption">@Model.MostGoals.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <img class="profile-picture-default" src="~/Content/Images/lobo.png" /><br />
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostGoals.id })';">
+                                            <span class="caption">@Model.MostGoals.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                <h4>
+                                    @Model.MostGoals.goals Goals
+                                </h4>
+                                <hr />
+                            </div>
+                        </center>
+
+                    }
+                    @if (Model.MostAssists != null)
+                    {
+                        <center>
+                            <div class="row col-md-10 col-md-push-1">
+                                @if (Model.MostAssists.picture != null)
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostAssists.id })';">
+                                            <img class="profile-picture-md" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.MostAssists.id })" /><br />
+                                            <span class="caption">@Model.MostAssists.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="profile-picture-container-md">
+                                        <img class="profile-picture-default" src="~/Content/Images/lobo.png" /><br />
+                                        <a class="hover" onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.MostAssists.id })';">
+                                            <span class="caption">@Model.MostAssists.name</span>
+                                        </a>
+                                    </div>
+                                }
+                                <h4>
+                                    @Model.MostAssists.assists Assists
+                                </h4>
+                            </div>
+                        </center>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<script type="text/javascript">
+    $("#SelectedSeason").change(function () {
+        $('#hdnSelectedSeason').val($('#SelectedSeason').val());
+    });
+    $("#btnGo").click(function () {
+        window.location = '/Statistics/Index?seasonId=' + $('#hdnSelectedSeason').val();
+    });
+</script>

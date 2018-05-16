@@ -10,6 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using UNMHockeySite.Models;
 using UNMHockeySite.Services;
+using System.Net;
+using SendGrid;
+using System.Net.Mail;
 
 namespace UNMHockeySite.Controllers
 {
@@ -199,18 +202,35 @@ namespace UNMHockeySite.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                var message = new SendGridMessage();
+                message.From = new MailAddress("donotreply@LoboHockeyWebsite.com");  // replace with valid value
+                message.Subject = "Email from Lobo Hockey";
+                message.Html = "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>";
+                message.AddTo(model.Email);
+
+                // Create network credentials to access your SendGrid account
+                var username = System.Configuration.ConfigurationManager.AppSettings["SendGridUsername"];
+                var pswd = System.Configuration.ConfigurationManager.AppSettings["SendGridPassword"];
+
+                var credentials = new NetworkCredential(username, pswd);
+                // Create an Web transport for sending email.
+                var transportWeb = new Web(credentials);
+
+                // Send the email, which returns an awaitable task.
+                await transportWeb.DeliverAsync(message);
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+
+
             }
 
             // If we got this far, something failed, redisplay form

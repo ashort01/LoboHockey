@@ -1,13 +1,18 @@
-﻿@model UNMHockeySite.Models.Player
+﻿@model UNMHockeySite.Models.PlayerViewModel
 
 @{
     ViewBag.Title = "CreatePlayer";
 }
 
 @using (Html.BeginForm("CreatePlayer", "Roster", FormMethod.Post,
-                            new { enctype = "multipart/form-data" }))
+                                        new { enctype = "multipart/form-data", id = "playerForm" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.pic_x1)
+    @Html.HiddenFor(model => model.pic_width)
+    @Html.HiddenFor(model => model.pic_y1)
+    @Html.HiddenFor(model => model.pic_height)
     <div class="row">
         <div class="col-md-8 col-md-push-2">
 
@@ -20,173 +25,169 @@
                     <br />
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Id)
-                        @Html.HiddenFor(model => model.User.Id)
-                        @Html.HiddenFor(model => model.User.UserName)
                         @Html.HiddenFor(model => model.isEdit)
-                        <div class="form-group">
-
-                            <label class="control-label col-md-2" for="upload">Upload Photo</label>
-                            @if (Model.PlayerImage != null)
-                            {
-                                    <buton class="card-button" onclick="UploadPhoto()">Change Photo</buton>
-                                    <div id="pnPhoto" class="profile-picture-container">
-                                        <img class="profile-picture" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
-                                    </div>
-                                    <div id="pnlUpload" class="col-md-10 hidden">
-                                        <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
-                                    </div>
-                            }
-                            else
-                            {
-                                <div id="pnlUpload" class="col-md-10">
-                                    <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div id="pnlPhoto">
+                                    <buton class="btn btn-default" onclick="UploadPhoto()">Select a Different Photo</buton>
+                                    <img id="photoResult" src="@Url.Action("LoadPlayerImage", "Roster", new { id = Model.Id })" />
                                 </div>
-                            }
-
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="Name">Full Name</label>
-
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                <div id="pnlUpload" class="col-md-10" style="display:none">
+                                    <label class="control-label col-md-2" for="upload">Upload Photo</label>
+                                    <input type="file" id="upload" name="file" style="width: 100%;" class="form-control" onchange="readURL(this)" />
+                                </div>
+                                <small id="emailHelp" class="form-text text-muted">Upload a photo and crop your face! </small>
                             </div>
                         </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Name">Full Name</label>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Birthplace, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Birthplace, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Birthplace, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Ex: Albuquerque, NM </small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="BirthMonth">Birthdate</label>
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.BirthMonth, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "-- Select Month --")
-                                @Html.DropDownListFor(model => model.BirthDay, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Day --")
-                                @Html.DropDownListFor(model => model.BirthYear, Enumerable.Range(1900, 109).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Year --")
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Ex: 5' 7" </small>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Birthplace, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Birthplace, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Birthplace, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Ex: Albuquerque, NM </small>
+                                </div>
                             </div>
-                        </div>
 
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="BirthMonth">Birthdate</label>
+                                <div class="col-md-3">
+                                    @Html.DropDownListFor(model => model.BirthMonth, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "-- Select Month --", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.DropDownListFor(model => model.BirthDay, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Day --", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.DropDownListFor(model => model.BirthYear, Enumerable.Range(1900, 109).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "-- Select Year --", new { @class = "form-control" })
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <small id="emailHelp" class="form-text text-muted">Tell us about yourself! Please write in the 3rd person. </small>
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Ex: 5' 7" </small>
+
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="Team_Role">Team Role</label>
-
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Team_Role, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Team_Role, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Ex: (Alternate Captain, Coach, President) </small>
-                                <small id="emailHelp" class="form-text text-muted">(Optional) </small>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Major, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Major, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Major, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Ex: Chemical Engineering </small>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Ex: Sophomore, or Graduate </small>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <small id="emailHelp" class="form-text text-muted">Tell us about yourself! Please write in the 3rd person. </small>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Bio, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="FacebookURL">Facebook URL</label>
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.FacebookURL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.FacebookURL, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
-                                <small id="emailHelp" class="form-text text-muted">Ex: https://facebook.com/yourprofile </small>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Team_Role">Team Role</label>
 
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Team_Role, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Team_Role, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Ex: (Alternate Captain, Coach, President) </small>
+                                    <small id="emailHelp" class="form-text text-muted">(Optional) </small>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="TwitterURL">Twitter URL</label>
-
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.TwitterURL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.TwitterURL, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
-                                <small id="emailHelp" class="form-text text-muted">Ex: https://twitter.com/yourprofile </small>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Major, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Major, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Major, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Ex: Chemical Engineering </small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="InstagramURL">Instagram URL</label>
-
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.InstagramURL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.InstagramURL, "", new { @class = "text-danger" })
-                                <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
-                                <small id="emailHelp" class="form-text text-muted">Ex: https://instagram.com/yourprofile </small>
-
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Ex: Sophomore, or Graduate </small>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="FacebookURL">Facebook URL</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.FacebookURL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FacebookURL, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                    <small id="emailHelp" class="form-text text-muted">Ex: https://facebook.com/yourprofile </small>
+
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="TwitterURL">Twitter URL</label>
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TwitterURL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TwitterURL, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                    <small id="emailHelp" class="form-text text-muted">Ex: https://twitter.com/yourprofile </small>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="InstagramURL">Instagram URL</label>
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.InstagramURL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.InstagramURL, "", new { @class = "text-danger" })
+                                    <small id="emailHelp" class="form-text text-muted">Link to your profile! (optional) </small>
+                                    <small id="emailHelp" class="form-text text-muted">Ex: https://instagram.com/yourprofile </small>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
                             <div>
-                                @Html.ActionLink("Back to Manage", "Index","Manage",null,null)
+                                @Html.ActionLink("Back to Manage", "Index", "Manage", null, null)
                             </div>
-                    </div>
+                        </div>
                 </div>
 
             </div>
@@ -194,6 +195,12 @@
     </div>
 }
 <script type="text/javascript">
+
+    var jcrop_api;
+    $('#playerForm').submit(function (e) {
+        SetCoordinates();
+    })
+
     $("#upload").change(function () {
         $("#uploadWarning").hide();
         $('#upload').removeClass("alert-danger");
@@ -203,4 +210,57 @@
         $("#pnlPhoto").hide();
         $("#pnlUpload").show();
     }
+
+    function readURL(input) {
+        var width;
+        var height;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#photoResult')
+                    .attr('src', e.target.result);
+
+                var image = new Image();
+                image.src = e.target.result;
+
+                image.onload = function () {
+                    // access image size here
+                    width = this.width;
+                    height = this.height;
+                    DisplayPhoto(this.width, this.height);
+                };
+
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function DisplayPhoto(width, height) {
+        console.log("true:" + width + height);
+        $("#pnlPhoto").show();
+        $("#pnlUpload").hide();
+        $(function () {
+            var jcrop_options = {
+                trueSize: [width, height],
+                aspectRatio: 1 / 1, //keep aspect ratio
+                setSelect: [0, 0, 100, 100],
+                boxWidth: 450, boxHeight: 400
+            };
+            $('#photoResult').Jcrop(jcrop_options, function () {
+                jcrop_api = this;
+            });
+        });
+    }
+
+
+    function SetCoordinates() {
+        console.log('setting coords');
+        var coords = jcrop_api.tellSelect();
+        $('#pic_x1').val(coords.x);
+        $('#pic_width').val(coords.w);
+        $('#pic_y1').val(coords.y);
+        $('#pic_height').val(coords.h);
+    }
+
+
+
 </script>

@@ -373,6 +373,13 @@ namespace UNMHockeySite.Controllers
             DataService.RemovePlayer(Id);
             return RedirectToAction("ManageRoster", new { SeasonId });
         }
+
+        [Authorize(Roles = "Manager")]
+        public ActionResult SiteStats()
+        {
+            HomePageHitsViewModel vm = DataService.GetSiteHitStats();
+            return View(vm);
+        }
         //
         // POST: ManageRosterInitial
         [HttpPost]
@@ -436,6 +443,29 @@ namespace UNMHockeySite.Controllers
         {
             DataService.CreateNewSeason(vm);
             return RedirectToAction("Index");
+        }
+
+        //GET: ManageGamesInitial
+        [Authorize(Roles = "Manager")]
+        public ActionResult CurrentSeason()
+        {
+            CurrentSeasonViewModel vm = DataService.GetCurrentSeasonViewModel();
+            return View(vm);
+        }
+        //Post: ManageGamesInitial
+        [Authorize(Roles = "Manager")]
+        [HttpPost]
+        public ActionResult CurrentSeason(CurrentSeasonViewModel vm)
+        {
+            if (vm.SelectedSeason != 0)
+            {
+                DataService.SetCurrentSeason(vm);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(vm);
+            }
         }
 
         #region Helpers

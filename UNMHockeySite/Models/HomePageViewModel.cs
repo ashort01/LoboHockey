@@ -13,7 +13,12 @@ namespace UNMHockeySite.Models
         public int wins { get; set; }
         public int losses { get; set; }
         public int otls { get; set; }
-        public List<PlayerStats> scoringLeaders { get; set; }
+        public PlayerStats mostPoints { get; set; }
+        public PlayerStats mostGoals { get; set; }
+        public PlayerStats mostAssists { get; set; }
+        public int mostPointsNum { get; set; }
+        public int mostGoalsNum { get; set; }
+        public int mostAssistsNum { get; set; }
 
     }
 }

@@ -1,0 +1,43 @@
+﻿@model UNMHockeySite.Models.GoalViewModel
+<div class="form-group">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+            <div class="col-md-4">
+                <div class="row col-md-12">
+
+                    <label class="control-label col-md-6" for="GoalPlayerId">Goal</label>
+                </div>
+                <div class="row col-md-12">
+
+                    @Html.DropDownListFor(model => model.GoalPlayerId, Model.Players, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GoalPlayerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="row col-md-12">
+
+                    <label class="control-label col-md-6" for="Assist1PlayerId">Assist</label>
+                </div>
+                <div class="row col-md-12">
+                    @Html.DropDownListFor(model => model.Assist1PlayerId, Model.Players, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist1PlayerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="row col-md-12">
+                    <label class="control-label col-md-6" for="Assist2PlayerId">Assist</label>
+                </div>
+                <div class="row col-md-12">
+                    @Html.DropDownListFor(model => model.Assist2PlayerId, Model.Players, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Assist2PlayerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    </div>
+</div>
+
+

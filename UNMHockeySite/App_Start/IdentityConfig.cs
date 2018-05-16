@@ -27,25 +27,39 @@ namespace UNMHockeySite
 
         public static void SendOrderEmail(EmailFormModel model)
         {
-            var message = new SendGridMessage();
-            message.AddCc(System.Configuration.ConfigurationManager.AppSettings["email"].Split(';')[0]);
-            message.From = new MailAddress("donotreply@LoboHockeyWebsite.com");  // replace with valid value
-            message.Subject = "New Season Ticket Order";
-            message.Html = "There is a new season ticket order! Someone filled out the form on the website and is requesting you contact them."
-                + "<br />" + "<br />" + "From: " + model.FromName + "<br />" + "Email: "
-                + model.FromEmail + "<br />" + "Phone Number: " + model.PhoneNumber + "<br />" + "Message (optional): " + model.Message;
+            //check to see if the message contains a link
+            //model.Message = ReplaceLink(model.Message);
+                //commented out for cyber project because it was broken
+                //var message = new SendGridMessage();
+                //message.AddCc(System.Configuration.ConfigurationManager.AppSettings["email"].Split(';')[0]);
+                //message.From = new MailAddress("donotreply@LoboHockeyWebsite.com");  // replace with valid value
+                //message.Subject = "New Season Ticket Order";
+                //message.Html = "There is a new season ticket order! Someone filled out the form on the website and is requesting you contact them."
+                //    + "<br />" + "<br />" + "From: " + model.FromName + "<br />" + "Email: "
+                //    + model.FromEmail + "<br />" + "Phone Number: " + model.PhoneNumber + "<br />" + "Message (optional): " + model.Message;
 
-            // Create network credentials to access your SendGrid account
-            var username = System.Configuration.ConfigurationManager.AppSettings["SendGridUsername"];
-            var pswd = System.Configuration.ConfigurationManager.AppSettings["SendGridPassword"];
+                //// Create network credentials to access your SendGrid account
+                //var username = System.Configuration.ConfigurationManager.AppSettings["SendGridUsername"];
+                //var pswd = System.Configuration.ConfigurationManager.AppSettings["SendGridPassword"];
 
-            var credentials = new NetworkCredential(username, pswd);
-            // Create an Web transport for sending email.
-            var transportWeb = new Web(credentials);
+                //var credentials = new NetworkCredential(username, pswd);
+                //// Create an Web transport for sending email.
+                //var transportWeb = new Web(credentials);
 
-            // Send the email, which returns an awaitable task.
-            transportWeb.DeliverAsync(message);
+                //// Send the email, which returns an awaitable task.
+                //transportWeb.DeliverAsync(message);
+        }
 
+        public static string ReplaceLink(string message)
+        {
+            if (Uri.IsWellFormedUriString(message, UriKind.RelativeOrAbsolute))
+            {
+                return "";
+            }
+            else
+            {
+                return message;
+            }
         }
     }
 

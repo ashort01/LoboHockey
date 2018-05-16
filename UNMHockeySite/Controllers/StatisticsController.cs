@@ -4,16 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UNMHockeySite.Models;
+using UNMHockeySite.Services;
 
 namespace UNMHockeySite.Controllers
 {
     public class StatisticsController : Controller
     {
         // GET: Statistics
-        public ActionResult Index()
+        public ActionResult Index(int? seasonId)
         {
-            StatisticsViewModel vm = new StatisticsViewModel();
+            if (seasonId == null)
+            {
+                seasonId = DataService.GetCurrentSeason().Id;
+            }
+            StatisticsViewModel vm = new StatisticsViewModel(seasonId.Value);
             return View(vm);
         }
+
     }
 }

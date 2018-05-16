@@ -15,7 +15,6 @@ namespace UNMHockeySite.Models
             Goals = new HashSet<Goal>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [StringLength(50)]

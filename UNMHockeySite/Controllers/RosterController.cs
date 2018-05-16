@@ -18,62 +18,29 @@ namespace UNMHockeySite.Controllers
         private TeamEntities db = new TeamEntities();
         private UserManager<ApplicationUser> manager;
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? seasonId)
         {
-            return View(DataService.GetActivePlayers());
+            if(seasonId == null)
+            {
+                seasonId = DataService.GetCurrentSeason().Id;
+            }
+            RosterViewModel vm = new RosterViewModel(seasonId.Value);
+            return View(vm);
         }
 
-        //[HttpGet]
-        //public ActionResult PlayerLogIn()
-        //{
-        //    PlayerLogInViewModel PLIVM = new PlayerLogInViewModel();
-        //    return View(PLIVM);
-        //}
-
-        //[HttpPost]
-        //public async Task<ActionResult> PlayerLogin(PlayerLogInViewModel loginInfo)
-        //{
-        //    if (ModelState.IsValid == false)
-        //    {
-        //        return View(loginInfo);
-        //    }
-
-        //    else if(loginInfo.Password != "ilovehockey")
-        //    {
-        //        ModelState.AddModelError("Password", "Invalid username or password");
-        //        ApplicationUser user = new ApplicationUser();
-        //        FormsAuthentication.SetAuthCookie(loginInfo.Email, true);
-        //        user.Email = loginInfo.Email;
-        //        await user.GenerateUserIdentityAsync(manager);
-        //        return View(new PlayerLogInViewModel());
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("CreatePlayer", "Roster");
-        //    }
-        //}
         [HttpGet]
         public ActionResult CreatePlayer()
         {
             Player p = DataService.GetPlayer(User.Identity.GetUserId());
-            return View(p);
+            var player = DataService.ConvertPlayerDBtoVM(p);
+            return View(player);
         }
 
         [HttpPost]
-        public ActionResult CreatePlayer(Player player, FormCollection form, HttpPostedFileBase file)
+        public ActionResult CreatePlayer(PlayerViewModel player, FormCollection form, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                //int month = 0;
-                //Int32.TryParse(form["month"], out month);
-                //int day = 0;
-                //Int32.TryParse(form["day"], out day);
-                //int year = 0;
-                //Int32.TryParse(form["birthyear"], out year);
-                //if (month != 0 && day != 0 && year != 0)
-                //{
-                //    player.Birthdate = month + "/" + day + "/" + year;
-                //}
                 player.IsActive = true;
                 if (player.BirthDay != null && player.BirthMonth != null && player.BirthMonth != null)
                 {
@@ -83,9 +50,6 @@ namespace UNMHockeySite.Controllers
                     if (now < birthdate.AddYears(age)) age--;
                     player.Age = age;
                 }
-
-
-
                 if (file != null)
                 {
                     DataService.SavePlayerAndImage(file, player);
@@ -94,7 +58,6 @@ namespace UNMHockeySite.Controllers
                 {
                     DataService.SavePlayer(player);
                 }
-                
                 return RedirectToAction("Index", "Manage");
             }
             else

@@ -10,6 +10,9 @@ using UNMHockeySite.Models;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System.Drawing;
+using RestSharp;
+using RestSharp.Deserializers;
 
 namespace UNMHockeySite.Services
 {
@@ -17,22 +20,133 @@ namespace UNMHockeySite.Services
     {
         private TeamEntities db = new TeamEntities();
 
-        public static List<PlayerStats> CreateStatistics()
+        public static void IncrementHitCount()
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                HomePageHit rec = new HomePageHit { Date = DateTime.Now };
+                db.HomePageHits.Add(rec);
+                db.SaveChanges();
+            }
+        }
+
+        public static HomePageViewModel GetHomePage()
+        {
+            HomePageViewModel vm = new HomePageViewModel();
+            using (TeamEntities db = new TeamEntities())
+            {
+                var currentSeason = GetCurrentSeason();
+                DateTime today = DateTime.Now.AddHours(-8);
+                vm.nextFiveGames = db.Games.Where(a => (a.Date >= today)).OrderBy(a => a.Date).Take(5).ToList();
+                vm.nextGame = vm.nextFiveGames.First();
+                vm.wins = 0;
+                vm.losses = 0;
+                vm.otls = 0;
+                if (db.Games.Any(g => g.TeamScore != null && g.OpponentScore != null && currentSeason.Id == g.Season.Id))
+                {
+                    List<Game> games = db.Games.Include("Season").Where(g => g.TeamScore != null && g.OpponentScore != null && currentSeason.Id == g.Season.Id).ToList();
+                    foreach (Game g in games)
+                    {
+                        if (g.TeamScore > g.OpponentScore)
+                        {
+                            vm.wins++;
+                        }
+                        else if (g.TeamScore < g.OpponentScore && g.OverTime == false)
+                        {
+                            vm.losses++;
+                        }
+                        else
+                        {
+                            vm.otls++;
+                        }
+                    }
+                }
+                List<int> seasongames = db.Games.Where(i => i.Season.Id == currentSeason.Id).Select(i => i.Id).ToList();
+                var goals = db.Goals.Where(i => i.GameID != null).Where(i => seasongames.Contains(i.GameID.Value)).ToList();
+                goals = goals.Where(i => seasongames.Contains(i.GameID.Value)).ToList();
+                var goalsDictionary = db.SeasonPlayer.Include("Player").Where(i => i.Season.Id == currentSeason.Id).ToDictionary(c => c.Player.Id, c => 0);
+                var assistsDictionary = db.SeasonPlayer.Include("Player").Where(i => i.Season.Id == currentSeason.Id).ToDictionary(c => c.Player.Id, c => 0);
+                var pointsDictionary = db.SeasonPlayer.Include("Player").Where(i => i.Season.Id == currentSeason.Id).ToDictionary(c => c.Player.Id, c => 0);
+                foreach(Goal g in goals)
+                {
+                    goalsDictionary[g.Goal_PlayerID]++;
+                    pointsDictionary[g.Goal_PlayerID]++;
+                    if (g.Assist1_PlayerID != null)
+                    {
+                        assistsDictionary[g.Assist1_PlayerID.Value]++;
+                        pointsDictionary[g.Assist1_PlayerID.Value]++;
+                    }
+                    if (g.Assist2_PlayerID != null)
+                    {
+                        assistsDictionary[g.Assist2_PlayerID.Value]++;
+                        pointsDictionary[g.Assist2_PlayerID.Value]++;
+                    }
+                }
+                var goalsId = goalsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+                var assistsId = assistsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+                var pointsId = pointsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+                var mostGoalsPlayer = db.Players.Where(i => i.Id == goalsId).FirstOrDefault();
+                vm.mostGoals =
+                    new PlayerStats
+                    {
+                        id = mostGoalsPlayer.Id,
+                        name = mostGoalsPlayer.Name,
+                        picture = GetImageForPlayer(mostGoalsPlayer.Id)
+                    };
+                var mostAssistsPlayer = db.Players.Where(i => i.Id == assistsId).FirstOrDefault();
+                vm.mostAssists =
+                    new PlayerStats
+                    {
+                        id = mostAssistsPlayer.Id,
+                        name = mostAssistsPlayer.Name,
+                        picture = GetImageForPlayer(mostAssistsPlayer.Id)
+                    };
+                var mostPointsPlayer = db.Players.Where(i => i.Id == pointsId).FirstOrDefault();
+                vm.mostPoints =
+                    new PlayerStats
+                    {
+                        id = mostPointsPlayer.Id,
+                        name = mostPointsPlayer.Name,
+                        picture = GetImageForPlayer(mostPointsPlayer.Id)
+                    };
+                vm.mostGoalsNum = goalsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Value;
+                vm.mostAssistsNum = assistsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Value;
+                vm.mostPointsNum = pointsDictionary.Aggregate((l, r) => l.Value > r.Value ? l : r).Value;
+            }
+            return vm;
+        }
+
+        public static HomePageHitsViewModel GetSiteHitStats()
+        {
+            HomePageHitsViewModel vm = new HomePageHitsViewModel();
+            using (TeamEntities db = new TeamEntities())
+            {
+                vm.thisMonthHits = db.HomePageHits.Where(i => i.Date.Month == DateTime.Now.Month).Count();
+                vm.thisYearHits = db.HomePageHits.Where(i => i.Date.Year == DateTime.Now.Year).Count();
+                vm.totalHits = db.HomePageHits.Count();
+            }
+            return vm;
+        }
+
+
+        public static List<PlayerStats> CreateStatistics(int seasonId)
         {
             List<PlayerStats> stats = new List<PlayerStats>();
             using (TeamEntities db = new TeamEntities())
             {
-                stats = db.Players.Where(g => g.IsActive && g.Position.ToLower() != "goalie").Select(f => new PlayerStats
+                var seasonPlayers = db.SeasonPlayer.Include(i => i.Player).Include(i => i.Season).Where(i => i.Season.Id == seasonId).Select(i => i.Player.Id);
+                stats = db.Players.Where(g => g.IsActive && g.Position.ToLower() != "goalie" && seasonPlayers.Contains(g.Id)).Select(f => new PlayerStats
                 {
                      id = f.Id,
                     name = f.Name,
-                    //picture = f.Picture
                 }).ToList();
                 foreach (PlayerStats p in stats.ToList())
                 {
-                    p.goals = GetPlayerGoals(p.id);
-                    p.assists = GetPlayerAssists(p.id);
+                    p.picture = GetImageForPlayer(p.id);
+                    p.goals = GetPlayerGoals(p.id, seasonId);
+                    p.assists = GetPlayerAssists(p.id, seasonId);
                     p.position = GetPlayerPosition(p.id);
+                    p.games_played = GetGamesPlayed(p.id, seasonId);
                     p.points = p.goals + p.assists;
                 }
             }
@@ -88,10 +202,20 @@ namespace UNMHockeySite.Services
 
 
 
-        public static List<PlayerStats> GetScoringLeaders()
+        public static List<PlayerStats> GetScoringLeaders(int seasonId)
         {
-            List<PlayerStats> allStats = CreateStatistics();
+            List<PlayerStats> allStats = CreateStatistics(seasonId);
             return allStats.OrderByDescending(i => i.points).Take(5).ToList();
+        }
+
+        public static int GetGamesPlayed(int playerId, int SeasonId)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                var games = db.Games.Include(g=>g.Season).Where(g => g.Season.Id == SeasonId).Select(g=> g.Id).ToList();
+                var gameList = db.GamePlayer.Include(g => g.Game).Include(g => g.Player).Where(g => g.Player.Id == playerId && games.Contains(g.Game.Id));
+                return gameList.Count();
+            }
         }
 
         public static string GetPlayerPosition(int id)
@@ -119,17 +243,35 @@ namespace UNMHockeySite.Services
             return p;
         }
 
+        internal static void CreateGame(GameViewModel vm)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                Season season = db.Seasons.Where(e => e.Id == vm.SeasonId).FirstOrDefault();
+                if (season != null)
+                {
+                    Game game = new Game();
+                    game.Opponent = vm.Opponent;
+                    game.IsHome = vm.IsHome;
+                    game.Season = season;
+                    game.Date = DateTime.Parse(vm.DateString + " " + vm.TimeString);
+                    db.Games.Add(game);
+                    db.SaveChanges();
+                }
+            }
+        }
+
         public static Season GetCurrentSeason()
         {
             Season s = new Season();
             using (TeamEntities db = new TeamEntities())
             {
-                s = db.Seasons.OrderByDescending(e=> e.Id).FirstOrDefault<Season>();
+                s = db.Seasons.FirstOrDefault(e => e.IsCurrent == true);
             }
             return s;
         }
 
-        internal static bool IsPlayerCurrentlyRequesting(int id)
+        public static bool IsPlayerCurrentlyRequesting(int id)
         {
             using (TeamEntities db = new TeamEntities())
             {
@@ -147,22 +289,24 @@ namespace UNMHockeySite.Services
             }
         }
 
-        public static int GetPlayerGoals(int id)
+        public static int GetPlayerGoals(int id, int seasonId)
         {
             List<Goal> goals = new List<Goal>();
             using (TeamEntities db = new TeamEntities())
             {
-                goals = db.Goals.Where(g => g.Goal_PlayerID == id).ToList();
+                var games = db.Games.Include(g => g.Season).Where(g => g.Season.Id == seasonId).Select(g => g.Id).ToList();
+                goals = db.Goals.Where(g => g.Goal_PlayerID == id && games.Contains(g.Game.Id)).ToList();
             }
             return goals.Count();
         }
 
-        public static int GetPlayerAssists(int id)
+        public static int GetPlayerAssists(int id, int seasonId)
         {
             List<Goal> goals = new List<Goal>();
             using (TeamEntities db = new TeamEntities())
             {
-                goals = db.Goals.Where(g => g.Assist1_PlayerID == id || g.Assist2_PlayerID == id).ToList();
+                var games = db.Games.Include(g => g.Season).Where(g => g.Season.Id == seasonId).Select(g => g.Id).ToList();
+                goals = db.Goals.Where(g => (g.Assist1_PlayerID == id || g.Assist2_PlayerID == id) && games.Contains(g.Game.Id)).ToList();
             }
             return goals.Count();
         }
@@ -200,7 +344,7 @@ namespace UNMHockeySite.Services
                     gs.Date = item.Date.Value;
                     gs.gameId = item.Id;
                     gs.IsHome = item.IsHome.Value;
-                    gs.Opponent = item.Opponent;
+                    gs.Opponent = GetOpponentAbbreviation(item.Opponent);
                     gameStats.Add(gs);
                 }
                 var seasons = db.SeasonPlayer.Include("Season").Where(e => e.Player.Id == id).Select(e=> e.Season).ToList();
@@ -232,7 +376,7 @@ namespace UNMHockeySite.Services
                     }
                 }
                 result.LastFiveGames = gameStats;
-                result.SeasonList = seasonStats;
+                result.SeasonList = seasonStats.OrderBy(e=> e.title).ToList();
             }
             return result;
         }
@@ -354,56 +498,134 @@ namespace UNMHockeySite.Services
             }
         }
 
-
-
-        public static GameManagerViewModel GetGameManager(Game g)
+        public static List<Player> GetCurrentPlayers(Season s)
         {
-            GameManagerViewModel result = new GameManagerViewModel();
-            result.Opponent = g.Opponent;
-            result.Id = g.Id;
-            result.IsHome = g.IsHome;
-            result.OpponentScore = g.OpponentScore;
-            result.TeamScore = g.TeamScore;
-            result.Date = g.Date;
-            result.OpponentAbbr = GetOpponentAbbreviation(g.Opponent);
-            result.goals = new List<GoalViewModel>();
-            List<Goal> goals = GetGoalsForGame(g);
-            foreach (Goal go in goals)
+            using (TeamEntities db = new TeamEntities())
             {
-                GoalViewModel vm = new GoalViewModel();
-                vm.GoalPlayerId = go.Goal_PlayerID;
-                if (go.Assist1_PlayerID == null)
-                {
-                    vm.Assist1PlayerId = 0;
-                }
-                else
-                {
-                    vm.Assist1PlayerId = go.Assist1_PlayerID;
-                }
-                if (go.Assist2_PlayerID == null)
-                {
-                    vm.Assist2PlayerId = 0;
-                }
-                else
-                {
-                    vm.Assist2PlayerId = go.Assist2_PlayerID;
-                }
-                result.goals.Add(vm);
+                var seasonId = s.Id;
+                var seasonPlayers = db.SeasonPlayer.Include(i => i.Player).Where(e => e.Season.Id == seasonId).Select(i => i.Player.Id);
+                var players = db.Players.Where(i => seasonPlayers.Contains(i.Id));
+                return players.ToList(); 
             }
-            if (goals.Count < result.TeamScore.Value)
-            {
-                for(int i = goals.Count; i< result.TeamScore; i++)
-                {
-                    GoalViewModel vm = new GoalViewModel();
-                    result.goals.Add(vm);
-                }
-            }
-            result.teamShots = g.TeamShots;
-            result.opponentShots = g.OpponentShots;
-            return result;
         }
 
 
+
+        public static GameManagerViewModel GetGameManager(int gameId)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                GameManagerViewModel result = new GameManagerViewModel();
+                var g = db.Games.Include(e => e.Season).SingleOrDefault(e => e.Id == gameId);
+                if (g != null)
+                {
+                    result.Opponent = g.Opponent;
+                    result.Id = g.Id;
+                    result.SeasonId = g.Season.Id;
+                    result.IsHome = g.IsHome;
+                    result.OpponentScore = g.OpponentScore;
+                    result.TeamScore = g.TeamScore;
+                    result.Date = g.Date;
+                    result.OpponentAbbr = GetOpponentAbbreviation(g.Opponent);
+                    result.goals = new List<GoalViewModel>();
+                    List<Goal> goals = GetGoalsForGame(g);
+                    int seasonId = g.Season.Id;
+                    foreach (Goal go in goals)
+                    {
+                        GoalViewModel vm = new GoalViewModel(seasonId);
+                        vm.GoalPlayerId = go.Goal_PlayerID;
+                        if (go.Assist1_PlayerID == null)
+                        {
+                            vm.Assist1PlayerId = 0;
+                        }
+                        else
+                        {
+                            vm.Assist1PlayerId = go.Assist1_PlayerID;
+                        }
+                        if (go.Assist2_PlayerID == null)
+                        {
+                            vm.Assist2PlayerId = 0;
+                        }
+                        else
+                        {
+                            vm.Assist2PlayerId = go.Assist2_PlayerID;
+                        }
+                        result.goals.Add(vm);
+                    }
+                    if (goals.Count < result.TeamScore.Value)
+                    {
+                        for (int i = goals.Count; i < result.TeamScore; i++)
+                        {
+                            GoalViewModel vm = new GoalViewModel(seasonId);
+                            result.goals.Add(vm);
+                        }
+                    }
+                    result.teamShots = g.TeamShots;
+                    result.opponentShots = g.OpponentShots;
+                    result.currentPlayers = GetCurrentPlayers(g.Season);
+                    result.selectedPlayers = GetCurrentPlayers(g.Season);
+                }
+                return result;
+            }
+        }
+
+        public static CurrentSeasonViewModel GetCurrentSeasonViewModel()
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                CurrentSeasonViewModel vm = new CurrentSeasonViewModel();
+                vm.Seasons = new List<SelectListItem>();
+                var seasonList = db.Seasons;
+                foreach (var i in seasonList)
+                {
+                    SelectListItem item = new SelectListItem();
+                    item.Text = i.Season_Duration;
+                    item.Value = i.Id.ToString();
+                    vm.Seasons.Add(item);
+                }
+                vm.Seasons.Insert(0, new SelectListItem() { Text = "Select a Year", Value = "" });
+                return vm;
+            }
+        }
+
+        public static List<SelectListItem> GetSeasonSelectList()
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                var seasonList = db.Seasons;
+                var seasons = new List<SelectListItem>();
+                foreach (var i in seasonList)
+                {
+                    SelectListItem item = new SelectListItem();
+                    item.Text = i.Season_Duration;
+                    item.Value = i.Id.ToString();
+                    if (db.Games.Include(g => g.Season).Any(g => g.Season.Id == i.Id))
+                    {
+                        seasons.Add(item);
+                    }
+                }
+                return seasons;
+            }
+        }
+
+
+        public static void SetCurrentSeason(CurrentSeasonViewModel vm)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                if(vm.SelectedSeason != null)
+                {
+                    var season = db.Seasons.FirstOrDefault(e => e.Id == vm.SelectedSeason);
+                    season.IsCurrent = true;
+                    var otherSeason = db.Seasons.Where(e => e.Id != vm.SelectedSeason);
+                    foreach(var item in otherSeason)
+                    {
+                        item.IsCurrent = false;
+                    }
+                    db.SaveChanges();
+                }
+            }
+        }
 
         public static List<Goal> GetGoalsForGame(Game g)
         {
@@ -415,12 +637,13 @@ namespace UNMHockeySite.Services
             return goals;
         }
 
-        public static List<SelectListItem> GetPlayersSelectList()
+        public static List<SelectListItem> GetPlayersSelectList(int seasonId)
         {
             List<SelectListItem> players = new List<SelectListItem>();
             using (TeamEntities db = new TeamEntities())
             {
-                players = db.Players.Where(g => g.IsActive).Select(f => new SelectListItem
+                var seasonPlayers = db.SeasonPlayer.Include(i => i.Season).Include(i=> i.Player).Where(i => i.Season.Id == seasonId).Select(i=> i.Player.Id);
+                players = db.Players.Where(g => seasonPlayers.Contains(g.Id)).Select(f => new SelectListItem
                 {
                     Value = f.Id.ToString(),
                     Text = f.Name + " " + f.Number
@@ -428,6 +651,16 @@ namespace UNMHockeySite.Services
             }
             players.Insert(0,new SelectListItem { Value = null, Text = "-- Select a Player --" });
             return players;
+        }
+
+        public static List<Player> GetPlayersForSeason(int seasonId)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                var seasonPlayers = db.SeasonPlayer.Include(i => i.Season).Include(i => i.Player).Where(i => i.Season.Id == seasonId).Select(i => i.Player.Id).ToList();
+                List<Player> players = db.Players.Where(i => seasonPlayers.Contains(i.Id)).ToList();
+                return players;
+            }
         }
 
         public static List<GameViewModel> GetGameViewModels(List<Game> games)
@@ -459,7 +692,8 @@ namespace UNMHockeySite.Services
 
         public static string GetOpponentAbbreviation(string str)
         {
-            if (str != null && str.Contains(' '))
+            str = str.Trim(' ');
+            if (!String.IsNullOrEmpty(str) && str.Contains(' '))
             {
                 return String.Concat((str.Split(' ').Where(s => Char.IsUpper(s[0])).Select(s => s[0])));
             }
@@ -471,16 +705,7 @@ namespace UNMHockeySite.Services
             Game game = new Game();
             using (TeamEntities db = new TeamEntities())
             {
-                DateTime today = DateTime.Now.AddHours(-8);
-                var gamelist = db.Games.Where(a => (a.Date >= today));
-                if (gamelist.Any())
-                {
-                    game = gamelist.OrderBy(a => a.Date).First();
-                }
-                else
-                {
-                    game = null;
-                }
+
             }
             return game;
         }
@@ -518,6 +743,24 @@ namespace UNMHockeySite.Services
             }
         }
 
+        public static void SaveGamePlayers(GameManagerViewModel game)
+        {
+            using (TeamEntities db = new TeamEntities())
+            {
+                foreach (string playerId in game.selectedPlayerIds)
+                {
+                    int p = Int32.Parse(playerId);
+                    if (!db.GamePlayer.Include(i => i.Player).Include(g => g.Game).Any(i => i.Game.Id == game.Id && i.Player.Id == p))
+                    {
+                        var Gamem = db.Games.Where(s => s.Id == game.Id).FirstOrDefault();
+                        var Playerm = db.Players.Where(s => s.Id == p).FirstOrDefault();
+                        db.GamePlayer.Add(new Game_Player() { Game = Gamem, Player = Playerm });
+                    }
+                }
+                db.SaveChanges();
+            }
+        }
+
         public static void RemoveAllGoalsForGame(GameManagerViewModel game)
         {
             List<Goal> goalsInGame = new List<Goal>();
@@ -536,15 +779,18 @@ namespace UNMHockeySite.Services
         {
             Player p = new Player();
             List<Player> ps = new List<Player>();
+            var season = GetCurrentSeason();
             Random rand = new Random();
             using (TeamEntities db = new TeamEntities())
             {
-                int index = rand.Next(0, (int)db.Players.Where(a => a.IsActive == true).Count());
-                ps = db.Players.Where(a => a.IsActive == true).ToList();
-                if (ps.Count >= 1)
-                {
-                    p = ps.ElementAt(index);
-                }
+                var seasonPlayers = db.SeasonPlayer.Where(s => s.Season.Id == season.Id).Select(s => s.Player.Id);
+                ps = db.Players.Include("PlayerImage").Where(a => a.IsActive == true && seasonPlayers.Contains(a.Id)).ToList();
+                p = ps.OrderBy(c => Guid.NewGuid()).FirstOrDefault();
+                //int index = rand.Next(0, ps.Count());
+                //if (ps.Count >= 1)
+                //{
+                //    p = ps.ElementAt(index);
+                //}
             }
             return p;
         }
@@ -654,11 +900,13 @@ namespace UNMHockeySite.Services
             }
         }
 
-        public static void SavePlayer(Player player)
+        public static void SavePlayer(PlayerViewModel p)
         {
             Player tempPlayer = new Player();
             using (TeamEntities db = new TeamEntities())
             {
+                var player = db.Players.FirstOrDefault(i => i.Id == p.Id);
+                player = SetPlayerFields(player, p);
                 if (db.Players.Any(a => a.Id == player.Id))
                 {
                     db.Players.Attach(player);
@@ -687,78 +935,99 @@ namespace UNMHockeySite.Services
         //    }
         //}
 
-        //public static Player ConvertVMToDB(PlayerViewModel player)
-        //{
-        //    DataService service = new DataService();
-        //    Player tempPlayer = new Player();
-        //    tempPlayer.Id = player.Id;
-        //    tempPlayer.Number = player.Number;
-        //    tempPlayer.Birthplace = player.Birthplace;
-        //    tempPlayer.IsActive = player.IsActive;
-        //    tempPlayer.Height = player.Height;
-        //    tempPlayer.Weight = player.Weight;
-        //    tempPlayer.Position = player.Position;
-        //    tempPlayer.Name = player.Name;
-        //    tempPlayer.Bio = player.Bio;
-        //    tempPlayer.Email = player.Email;
-        //    tempPlayer.Team_Role = player.Team_Role;
-        //    tempPlayer.Major = player.Major;
-        //    tempPlayer.Picture = service.ConvertToBytes(player.Picture);
-        //    tempPlayer.Year = player.Year;
-        //    tempPlayer.SnapChatURL = player.SnapChatURL;
-        //    tempPlayer.TwitterURL = player.TwitterURL;
-        //    tempPlayer.FacebookURL = player.FacebookURL;
-        //    tempPlayer.InstagramURL = player.InstagramURL;
-        //    tempPlayer.BirthYear = player.BirthYear;
-        //    tempPlayer.Birthplace = player.Birthplace;
-        //    tempPlayer.BirthYear = player.BirthYear;
-        //    tempPlayer.isEdit = player.isEdit;
-        //    tempPlayer.Age = player.Age;
-        //    return tempPlayer;
-        //}
-        //public static PlayerViewModel ConvertDBtoVM(Player tempPlayer)
-        //{
-        //    DataService service = new DataService();
-        //    PlayerViewModel player = new PlayerViewModel();
-        //    player.Id = tempPlayer.Id;
-        //    player.Number = tempPlayer.Number;
-        //    player.Birthplace = tempPlayer.Birthplace;
-        //    player.IsActive = tempPlayer.IsActive;
-        //    player.Height = tempPlayer.Height;
-        //    player.Weight = tempPlayer.Weight;
-        //    player.Position = tempPlayer.Position;
-        //    player.Name = tempPlayer.Name;
-        //    player.Bio = tempPlayer.Bio;
-        //    player.Email = tempPlayer.Email;
-        //    player.Team_Role = tempPlayer.Team_Role;
-        //    player.Major = tempPlayer.Major;
-        //    player.Picture = tempPlayer.Picture;
-        //    player.Year = tempPlayer.Year;
-        //    player.SnapChatURL = tempPlayer.SnapChatURL;
-        //    player.TwitterURL = tempPlayer.TwitterURL;
-        //    player.FacebookURL = tempPlayer.FacebookURL;
-        //    player.InstagramURL = tempPlayer.InstagramURL;
-        //    player.BirthYear = tempPlayer.BirthYear;
-        //    player.Birthplace = tempPlayer.Birthplace;
-        //    player.BirthYear = tempPlayer.BirthYear;
-        //    player.isEdit = tempPlayer.isEdit;
-        //    player.Age = tempPlayer.Age;
-        //}
+        public static PlayerViewModel ConvertPlayerDBtoVM(Player tempPlayer)
+        {
+            DataService service = new DataService();
+            PlayerViewModel player = new PlayerViewModel();
+            player.Id = tempPlayer.Id;
+            player.Number = tempPlayer.Number;
+            player.Birthplace = tempPlayer.Birthplace;
+            player.IsActive = tempPlayer.IsActive;
+            player.Height = tempPlayer.Height;
+            player.Weight = tempPlayer.Weight;
+            player.Position = tempPlayer.Position;
+            player.Name = tempPlayer.Name;
+            player.Bio = tempPlayer.Bio;
+            player.Team_Role = tempPlayer.Team_Role;
+            player.Major = tempPlayer.Major;
+            player.Picture = tempPlayer.PlayerImage;
+            player.Year = tempPlayer.Year;
+            player.SnapChatURL = tempPlayer.SnapChatURL;
+            player.TwitterURL = tempPlayer.TwitterURL;
+            player.FacebookURL = tempPlayer.FacebookURL;
+            player.InstagramURL = tempPlayer.InstagramURL;
+            player.Birthplace = tempPlayer.Birthplace;
+            player.BirthYear = tempPlayer.BirthYear;
+            player.BirthMonth = tempPlayer.BirthMonth;
+            player.BirthDay = tempPlayer.BirthDay;
+            player.isEdit = tempPlayer.isEdit;
+            player.Age = tempPlayer.Age;
+            return player;
+        }
+
+        public static Player SetPlayerFields(Player player, PlayerViewModel vm)
+        {
+            player.Number = vm.Number;
+            player.Birthplace = vm.Birthplace;
+            player.Height = vm.Height;
+            player.Weight = vm.Weight;
+            player.Position = vm.Position;
+            player.Name = vm.Name;
+            player.Bio = vm.Bio;
+            player.Team_Role = vm.Team_Role;
+            player.Major = vm.Major;
+            player.Year = vm.Year;
+            player.SnapChatURL = vm.SnapChatURL;
+            player.TwitterURL = vm.TwitterURL;
+            player.FacebookURL = vm.FacebookURL;
+            player.InstagramURL = vm.InstagramURL;
+            player.Birthplace = vm.Birthplace;
+            player.BirthYear = vm.BirthYear;
+            player.BirthMonth = vm.BirthMonth;
+            player.BirthDay = vm.BirthDay;
+            player.Age = vm.Age;
+            return player;
+        }
 
 
-        public static void SavePlayerAndImage(HttpPostedFileBase file, Player player)
+        public static void SavePlayerAndImage(HttpPostedFileBase file, PlayerViewModel p)
         {
             DataService service = new DataService();
             using (TeamEntities db = new TeamEntities())
             {
+                var player = db.Players.FirstOrDefault(i => i.Id == p.Id);
+                player = SetPlayerFields(player, p);
                 Photo photo = new Photo();
-                photo.ImageData = service.ConvertToBytes(file);
+                if (p.pic_x1 != null && p.pic_width != null && p.pic_y1 != null && p.pic_height != null)
+                {
+                    photo.ImageData = CropImage(service.ConvertToBytes(file),(int) Math.Round(p.pic_x1.Value), (int)Math.Round(p.pic_y1.Value), (int)Math.Round(p.pic_width.Value), (int)Math.Round(p.pic_height.Value));
+                }
+                else
+                {
+                    photo.ImageData = service.ConvertToBytes(file);
+                }
                 photo.IsActive = true;
                 db.Photos.Add(photo);
                 player.PlayerImage = photo;
                 db.Players.Attach(player);
                 db.SaveChanges();
             }
+        }
+
+        public static byte[] CropImage(byte[] picData, int x, int y, int width, int height)
+        {
+            MemoryStream ms = new MemoryStream(picData);
+            Image source = Image.FromStream(ms);
+
+            Rectangle crop = new Rectangle(x, y, width, height);
+
+            var bmp = new Bitmap(crop.Width, crop.Height);
+            using (var gr = Graphics.FromImage(bmp))
+            {
+                gr.DrawImage(source, new Rectangle(0, 0, bmp.Width, bmp.Height), crop, GraphicsUnit.Pixel);
+            }
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(bmp, typeof(byte[]));
         }
 
         public byte[] ConvertToBytes(HttpPostedFileBase image)
@@ -782,9 +1051,11 @@ namespace UNMHockeySite.Services
         public static List<Player> GetActivePlayers()
         {
             List<Player> players = new List<Player>();
+            var season = GetCurrentSeason();
             using (TeamEntities db = new TeamEntities())
             {
-                players = db.Players.Where(a => a.IsActive == true).ToList();
+                var seasonPlayers = db.SeasonPlayer.Include(e => e.Season).Include(e => e.Player).Where(s => s.Season.Id == season.Id).Select(e => e.Player.Id).ToList();
+                players = db.Players.Where(a => a.IsActive == true && seasonPlayers.Contains(a.Id)).ToList();
             }
             return players;
         }
@@ -804,6 +1075,7 @@ namespace UNMHockeySite.Services
             }
             return null;
         }
+
 
     }
 }

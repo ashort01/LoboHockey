@@ -15,5 +15,7 @@ namespace UNMHockeySite.Models
 
         [StringLength(50)]
         public string Season_Duration { get; set; }
+
+        public bool? IsCurrent { get; set; }
     }
 }

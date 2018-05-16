@@ -1,4 +1,4 @@
-﻿@model UNMHockeySite.Models.Game
+﻿@model UNMHockeySite.Models.GameViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="IsHome" class = "control-label col-md-2">Home Game?</label>
+                            <label for="IsHome" class="control-label col-md-2">Home Game</label>
                             <div class="col-md-10">
                                 <div class="checkbox">
                                     @Html.EditorFor(model => model.IsHome)
@@ -37,25 +37,19 @@
                             </div>
                         </div>
 
-                        <div class="container">
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <input type='text' class="form-control" id='datetimepicker4' />
-                                </div>
-                                <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker();
-            });
-                                </script>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateString, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DateString, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DateString, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
-    
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.TimeString, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.TimeString, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TimeString, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -68,7 +62,7 @@
                 }
 
                 <div>
-                    @Html.ActionLink("Back to Manage", "Index", "Manage", new { seasonId = Model.Season.Id }, "")
+                    @Html.ActionLink("Back to Manage", "Index", "Manage", new { seasonId = Model.SeasonId }, "")
                 </div>
 
 
@@ -77,14 +71,11 @@
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-   @Styles.Render("~/Content/datepickercss")
-@Styles.Render("~/Content/css")
+<script type="text/javascript">
+    $(function () {
+        $('#TimeString').timepicker({ 'scrollDefault': '8:00pm' });
 
-<script type="text/javascript" src="~/Scripts/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" href="~/Content/bootstrap-datepicker.css"/>
+        $('#DateString').datepicker();
+    });
+</script>
 
-}

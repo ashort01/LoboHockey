@@ -167,20 +167,6 @@
                     <img onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.featuredPlayer.Id })';" src="~/Content/Images/lobo_side.png" />
                     <h2 onclick="location.href='@Url.Action("Details", "Roster", new { id = Model.featuredPlayer.Id })';">Featured Lobo</h2>
                 </div>
-                <div class="card-tab-selector">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <center>
-                                <button id="btnDetails" class="card-tab-button">Details</button>
-                            </center>
-                        </div>
-                        <div class="col-xs-6">
-                            <center>
-                                <button id="btnBio" class="card-tab-button">Bio</button>
-                            </center>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="card-content">
                     @Html.Partial("~/Views/Roster/PlayerContent.cshtml", Model.featuredPlayer)
@@ -193,6 +179,7 @@
         }
     </div>
     <div class="col-md-4">
+       
         <div class="card" name="stats">
             <div class="card-header">
                 <img onclick="location.href='@Url.Action("Index", "Statistics")'" src="~/Content/Images/acha_square.png" />
@@ -201,7 +188,7 @@
             <div class="card-content">
                 <div class="row">
                     <div class="col-md-12 small-table-font">
-                        @Html.Partial("~/Views/Statistics/StatsTablePartial.cshtml", Model.scoringLeaders)
+                        @Html.Partial("~/Views/Statistics/StatsTablePartialCondensed.cshtml", Model.scoringLeaders)
                     </div>
                 </div>
                 <div class="row">
@@ -209,7 +196,7 @@
                 </div>
             </div>
         </div>
-        <div class="card" name="seasonTicketsSmall">
+        @*<div class="card" name="seasonTicketsSmall">
             <div class="card-header">
                 <img class="pic-smaller" onclick="location.href='@Url.Action("SeasonTickets", "Home")'" src="~/Content/Images/icon_ticket.png" />
                 <h2 onclick="location.href='@Url.Action("SeasonTickets", "Home")'">Tickets</h2>
@@ -219,6 +206,29 @@
                 <p class="caption">Order your season tickets today!</p>
                 <br />
                 <button onclick="location.href='@Url.Action("SeasonTickets", "Home")'" class="card-button">Season Tickets</button>
+            </div>
+        </div>*@
+        <div class="card" name="twitter">
+            <div class="card-header">
+                <img onclick="location.href='@Url.Action("Index", "Statistics")'" src="~/Content/Images/twitter_icon.png" />
+                <h2 onclick="location.href='@Url.Action("Index", "Statistics")'">Twitter</h2>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <br />
+                    <center>
+                        <a href="https://twitter.com/UNMLoboHockey" class="twitter-follow-button" data-show-count="false">Follow @@UNMLoboHockey</a>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </center>
+                </div>
+                <div class="row">
+                    <center>
+                        <div class="col-md-11 timeline-container">
+                            <a class="twitter-timeline" data-theme="light" href="https://twitter.com/UNMLoboHockey">Tweets by UNMLoboHockey</a>
+                            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </center>
+                </div>
             </div>
         </div>
         <div class="card" name="social">
@@ -234,7 +244,7 @@
                         <a href="https://www.facebook.com/groups/152372571767/"><img class="card-img-link" src="~/Content/Images/facebook_icon.png" /></a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="https://twitter.com/UNM_Lobo_Hockey"><img class="card-img-link" src="~/Content/Images/twitter_icon.png" /></a>
+                        <a href="https://twitter.com/UNMLoboHockey"><img class="card-img-link" src="~/Content/Images/twitter_icon.png" /></a>
                     </div>
                     <div class="col-xs-4">
                         <a href="https://www.instagram.com/unmlobohockey/"><img class="card-img-link" src="~/Content/Images/instagram_icon.png" /></a>
@@ -324,22 +334,5 @@
         $('#seconds').text(
             event.strftime('%S')
             );
-    });
-    $(document).ready(function () {
-        $('#pnlDetails').css('display', 'block');
-        $('#pnlBio').css('display', 'none');
-        $('#btnDetails').click();
-    });
-    $('.card-tab-button').on('click', function () {
-        $('.card-tab-button').removeClass('selected');
-        $(this).addClass('selected');
-        if (this.id == 'btnDetails') {
-            $('#pnlDetails').css('display', 'block');
-            $('#pnlBio').css('display', 'none');
-        }
-        else if (this.id == 'btnBio') {
-            $('#pnlDetails').css('display', 'none');
-            $('#pnlBio').css('display', 'block');
-        }
     });
 </script>
